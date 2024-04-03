@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    font-family: "Rubik", sans-serif;
+}
+
+:root {
+    --semi-dark-blue: #0F2167;
+    --dark-blue: #06103B;
+    --super-light-color: #22356E;
+    --gray-color: #202020;
+    --orange-color: #FE7A36;
+    --white-color: #E9F6FF;
+}
+
+body {
+    background-color: var(--dark-blue);
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.primary-color {
+    color: var(--orange-color);
+}
+
+.secondary-color {
+    color: var(--light-blue-color);
+}
+
+.side-menu {
+    width: 300px;
+    background-color: var(--semi-dark-blue);
+    border-right: 2px solid var(--super-light-color);
+    transition: all 0.2s ease-in-out;
+}
+
+.main-container {
+    flex-grow: 1;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+}

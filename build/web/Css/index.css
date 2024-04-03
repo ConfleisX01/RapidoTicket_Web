@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    font-family: "Quattrocento Sans", sans-serif;
+}
+
+:root {
+    --dark-blue-color: #0F2167;
+    --light-blue-color: #3652AD;
+    --gray-color: #202020;
+    --orange-color: #FE7A36;
+    --white-color: #E9F6FF;
+}
+
+body {
+    background-color: var(--dark-blue-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: var(--gray-color);
+}
+
+span {
+    color: var(--orange-color);
+}
+
+.primary-color {
+    color: var(--orange-color);
+}
+
+.option {
+    margin: 0rem 0.5rem;
+    padding: 0.2rem 0.6rem;
+    transition: all 0.2s ease-in-out;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: var(--orange-color);
+}
+
+.img-container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.help-container img{
+    object-fit: cover;
+}
+
+.float-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    display: grid;
+    place-items: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.help-container {
+    background-color: var(--gray-color);
+}
+
+.btn-primary {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--orange-color);
+    color: var(--white-color);
+    border: inherit;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: var(--gray-color);
+}
+
+.btn-primary:hover i {
+    color: #FE7A36;
+}
+
+.principal-bg {
+    background-image: url(../Img/Simple\ Shiny.svg);
+    background-position: center center;
+    background-size: cover;
+}
+
+.secondary-bg {
+    background-image: url(../Img/Sprinkle.svg);
+    background-position: center center;
+    background-size: cover;
+}
+
+.card-login {
+    width: 500px;
+    background-color: var(--white-color);
+    border-radius: 0.2rem;
+}
+
+.input-text {
+    border: inherit;
+    width: 100%;
+    padding: 0.4rem;
+    background-color: var(--white-color);
+    border-bottom: 1px solid var(--dark-blue-color);
+}
+
+.container-divisor {
+    text-align: center;
+    border-bottom: 1px solid var(--light-blue-color);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.code-card {
+    width: 500px;
+    text-align: center;
+}
+
+.code-input {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: inherit;
+    border: indianred;
+    border-bottom: 1px solid var(--light-blue-color);
+}
+
+.btn-secondary {
+    width: 100%;
+    padding: 0.3rem;
+    font-weight: bold;
+    background-color: var(--orange-color);
+    color: var(--white-color);
+    font-size: 1.2rem;
+    border: inherit;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-secondary:hover {
+    background-color: var(--gray-color);
+    color: var(--orange-color);
+}
+
+.card-report {
+    width: 500px;
+    padding: 1rem;
+    background-color: var(--white-color);
+}
+
+.form-input {
+    width: 100%;
+    background-color: var(--white-color);
+    border: 1px solid var(--gray-color);
+    border-radius: 0.2rem;
+    padding: 0.2rem;
+}
+
+.custom-size-image {
+    width: 500px; /* Ancho deseado */
+    height: auto; /* Altura ajustada automáticamente */
+}
+
+body.swal2-height-auto {
+    height: 100% !important;
+}
