@@ -35,7 +35,7 @@ body {
 }
 
 .side-menu {
-    width: 300px;
+    width: 250px;
     background-color: var(--semi-dark-blue);
     border-right: 2px solid var(--super-light-color);
     transition: all 0.2s ease-in-out;
@@ -100,29 +100,15 @@ body {
     color: var(--user-color);
 }
 
-table {
-    width: 100%;
-    color: var(--white-color);
-    background-color: var(--semi-dark-blue);
+.card-info:hover > i::before {
+    animation: rotar 0.2s ease-in-out; /* Llama a la animación al hacer hover */
 }
 
-thead {
-    border-bottom: 1px solid var(--bus-color);
-}
-
-thead tr th{
-    padding: 0.5rem;
-}
-
-tbody tr th{
-    padding: 0.5rem;
-}
-
-tbody tr{
-    padding: 0.5rem;
-    border-bottom: 1px solid var(--bus-color);
-}
-
-.table-limit tbody tr:nth-of-type(n+7) {
-    display: none;
+@keyframes rotar {
+    20% {
+        transform: rotate(-20deg); /* Rotar 90 grados a la derecha */
+    }
+    80% {
+        transform: rotate(20deg); /* Volver a la posición normal */
+    }
 }
