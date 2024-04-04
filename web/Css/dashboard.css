@@ -11,6 +11,12 @@
     --gray-color: #202020;
     --orange-color: #FE7A36;
     --white-color: #E9F6FF;
+
+    --location-color: #8dffcd;
+    --bus-color: #00a6fb;
+    --employee-color: #d86126;
+    --message-color: #9d4edd;
+    --user-color: #ffd100;
 }
 
 body {
@@ -37,6 +43,10 @@ body {
 
 .main-container {
     flex-grow: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
 }
 
 .flex-center {
@@ -46,4 +56,73 @@ body {
 
 .top-bar {
     background-color: var(--super-light-color);
+}
+
+.card-info {
+    padding: 1rem;
+    background-color: var(--semi-dark-blue);
+    color: var(--white-color);
+    border-radius: 0.2rem;
+}
+
+.location-icon::before {
+    padding: 1rem;
+    border-radius: 5rem;
+    background-color: rgba(89, 229, 208, 0.5);
+    color: var(--location-color);
+}
+
+.bus-icon::before {
+    padding: 1rem;
+    border-radius: 5rem;
+    background-color: rgba(50, 153, 255, 0.5);
+    color: var(--bus-color);   
+}
+
+.employee-icon::before {
+    padding: 1rem;
+    border-radius: 5rem;
+    background-color: rgba(216, 97, 38, 0.5);
+    color: var(--employee-color);
+}
+
+.message-icon::before {
+    padding: 1rem;
+    border-radius: 5rem;
+    background-color: rgba(157, 78, 221, 0.5);
+    color: var(--message-color);
+}
+
+.user-icon::before {
+    padding: 1rem;
+    border-radius: 5rem;
+    background-color: rgba(255, 209, 0, 0.5);
+    color: var(--user-color);
+}
+
+table {
+    width: 100%;
+    color: var(--white-color);
+    background-color: var(--semi-dark-blue);
+}
+
+thead {
+    border-bottom: 1px solid var(--bus-color);
+}
+
+thead tr th{
+    padding: 0.5rem;
+}
+
+tbody tr th{
+    padding: 0.5rem;
+}
+
+tbody tr{
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--bus-color);
+}
+
+.table-limit tbody tr:nth-of-type(n+7) {
+    display: none;
 }
