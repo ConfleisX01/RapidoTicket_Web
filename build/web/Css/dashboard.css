@@ -36,7 +36,6 @@ body {
 }
 
 .side-menu {
-    width: 250px;
     background-color: var(--semi-dark-blue);
     border-right: 2px solid var(--super-light-color);
     transition: all 0.2s ease-in-out;

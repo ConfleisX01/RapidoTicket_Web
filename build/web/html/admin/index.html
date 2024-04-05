@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <div class="side-menu p-2 text-white d-fixed d-flex flex-column" id="side-menu">
+    <div class="side-menu p-2 text-white d-flex flex-column">
         <div class="d-flex flex-row">
             <div class="flex-grow-1 flex-center">
                 <img src="../../Img/Logo Vector.svg" alt="Logo" width="32px">
@@ -31,7 +31,7 @@
                 <p class="primary-color flex-grow-1">Panel Principal</p>
             </div>
             <div class="d-flex flex-row">
-                <div class="flex-grow-1 d-flex">
+                <div class="flex-grow-1 d-flex" id="btnVistaGeneral">
                     <i class="bi bi-house"></i>
                     <p class="px-2">Vista General</p>
                 </div>
@@ -45,9 +45,8 @@
                 <p class="primary-color flex-grow-1">Panel Camiones</p>
             </div>
             <div class="d-flex flex-row">
-                <div class="flex-grow-1 d-flex">
+                <div class="flex-grow-1 d-flex" id="btnPanelCamiones">
                     <i class="bi bi-bus-front-fill"></i>
-
                     <p class="px-2">Camiones</p>
                 </div>
                 <div>
@@ -85,111 +84,6 @@
         </div>
     </div>
     <div class="main-container" id="main-container">
-        <div class="container-fluid top-bar p-2 text-white">
-            <h4>Panel Camiones / Camiones</h4>
-        </div>
-        <div class="container-fluid p-2 row g-3">
-            <div class="col-md-8">
-                <div class="card-info table-responsive">
-                    <div class="container-fluid p-0 d-flex align-items-center justify-content-between">
-                        <p class="m-0">Registros de todos los camiones</p>
-                        <button class="btn btn-primary" id="btnAgregarCamion">Agregar Camion</button>
-                    </div>
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID Camion</th>
-                                <th scope="col">Nombre del conductor</th>
-                                <th scope="col">Destinos</th>
-                                <th scope="col">Estatus</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">0001</th>
-                                <th scope="row">Juan Pablo</th>
-                                <th scope="row">
-                                    <select class="form-select form-select-sm" aria-label="Small select example">
-                                        <option value="1">Silao de la victoria</option>
-                                        <option value="2">Monte del Coecillo</option>
-                                        <option value="3">San Agustin de las Flores</option>
-                                        <option value="4">La Hacienda</option>
-                                    </select>
-                                </th>
-                                <th scope="row">
-                                    <span class="badge text-bg-primary">En viaje</span>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th scope="row">0002</th>
-                                <th scope="row">Alejandra</th>
-                                <th scope="row">
-                                    <select class="form-select form-select-sm" aria-label="Small select example">
-                                        <option value="1">Silao de la victoria</option>
-                                        <option value="2">Monte del Coecillo</option>
-                                        <option value="3">San Agustin de las Flores</option>
-                                        <option value="4">La Hacienda</option>
-                                    </select>
-                                </th>
-                                <th scope="row">
-                                    <span class="badge text-bg-primary">Descansando</span>
-                                </th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-md-4 row g-2">
-                <div class="col-12 card-info text-center">
-                    <div class="container-fluid p-0">
-                        <p>Modifica los parametros del camion seleccionado</p>
-                    </div>
-                </div>
-                <div class="col-12 card-info">
-                    <div class="container-fluid p-0 row">
-                        <div class="col-md-9">
-                            <label for="slcConductor" class="form-label">Selecciona el conductor</label>
-                            <select class="form-select form-select-sm" aria-label="Small select example" id="slcConductor">
-                                <option value="1">Juan Pablo</option>
-                                <option value="2">Alejandra</option>
-                                <option value="3">Joel Ezequiel</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3 d-flex align-items-end justify-content-center">
-                            <input type="button" class="btn btn-primary" value="Asignar">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 card-info">
-                    <div class="container-fluid p-2">
-                        <p>Lista de destinos del camion</p>
-                    </div>
-                    <div class="container-fluid p-2">
-                        <div class="col-12 row g-2">
-                            <div class="col-md-9">
-                                <label for="slcDestinos" class="form-label">Selecciona los destinos</label>
-                                <select class="form-select form-select-sm" aria-label="Small select example" id="slcDestinos">
-                                    <option value="1">Silao de la victoria</option>
-                                    <option value="2">Monte del Coecillo</option>
-                                    <option value="3">San Agustin de las Flores</option>
-                                    <option value="4">La Hacienda</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3 d-flex align-items-end justify-content-center">
-                                <input type="button" class="btn btn-primary" value="Agregar">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container-fluid p-2">
-                        <ul class="list-group list-group-flush list-group-numbered">
-                            <li class="list-group-item">Silao de la Victoria</li>
-                            <li class="list-group-item">San Agustin de las Flores</li>
-                            <li class="list-group-item">Monte del Coecillo</li>
-                          </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </body>
 <script src="../../Js/dashboard.js"></script>
