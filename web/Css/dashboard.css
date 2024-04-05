@@ -11,6 +11,7 @@
     --gray-color: #202020;
     --orange-color: #FE7A36;
     --white-color: #E9F6FF;
+    --red-color: #d90429;
 
     --location-color: #8dffcd;
     --bus-color: #00a6fb;
@@ -179,6 +180,34 @@ body {
 iframe {
     width: 100%;
     height: 300px;
+}
+
+table thead tr th {
+    color: var(--white-color) !important;
+    background-color: inherit !important;
+}
+
+table tbody tr th {
+    color: var(--white-color) !important;
+    background-color: inherit !important;
+    font-weight: 400;
+}
+
+table tbody tr {
+    transition: all 0.2s ease-in-out;
+}
+
+table tbody tr:hover {
+    background-color: var(--employee-color) !important;
+}
+
+.list-group li{
+    background-color: inherit !important;
+    color: var(--white-color) !important;
+}
+
+.list-group li:hover{
+    background-color: var(--red-color) !important;
 }
 
 @keyframes rotar {
