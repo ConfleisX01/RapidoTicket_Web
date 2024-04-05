@@ -9,14 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="../../Css/dashboard.css">
+    <link rel="stylesheet" href="../../Css/dashboard.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Admin - Rapido Ticket</title>
 </head>
 
 <body>
-    <div class="side-menu p-2 text-white d-flex flex-column" id="side-menu">
+    <div class="side-menu p-2 text-white d-fixed d-flex flex-column" id="side-menu">
         <div class="d-flex flex-row">
             <div class="flex-grow-1 flex-center">
                 <img src="../../Img/Logo Vector.svg" alt="Logo" width="32px">
@@ -107,25 +107,82 @@
             </div>
             <div class="col-md-4">
                 <div class="card-info text-center h-100">
-                    <h4>Numero de empleados registrados</h4>
+                    <h4>Número de empleados registrados</h4>
                     <i class="bi bi-person-arms-up fs-3 employee-icon"></i>
                     <h4 class="fw-bold m-2">80</h4>
                     <p>Empleados</p>
                 </div>
             </div>
-            <div class="col-md-8 table-responsive">
-                <div class="card-info messages-container h-100" id="messages-container">
+            <div class="col-md-8 messages-container">
+                <div class="card-info" id="messages-container">
                     <div class="container-fluid">
                         <p>Mensajes</p>
                     </div>
-                    <div class="container-fluid">
-                        
+                    <div class="container-fluid message-card d-flex">
+                        <div class="separator d-none d-md-block">
+                            <div class="dot"></div>
+                        </div>
+                        <div class="mx-2 p-2 d-flex align-items-center justify-content-center d-none d-md-block">
+                            <img src="../../Img/person_1.jpg" alt="Empleoyee" class="msg-img">
+                        </div>
+                        <div class="flex-grow-1 message-content m-2 p-2">
+                            <p class="m-0">Estoy aprendiendo a conducir y atropelle a un peaton en la calle principal,
+                                que deberia de hacer?</p>
+                        </div>
+                    </div>
+                    <div class="container-fluid message-card d-flex">
+                        <div class="separator d-none d-md-block">
+                            <div class="dot"></div>
+                        </div>
+                        <div class="mx-2 p-2 d-flex align-items-center justify-content-center d-none d-md-block">
+                            <img src="../../Img/person_2.jpg" alt="Empleoyee" class="msg-img">
+                        </div>
+                        <div class="flex-grow-1 message-content m-2 p-2">
+                            <p class="m-0">Me multaron por intentar darle una mordida a un transito, me estan llevando
+                                al corralon</p>
+                        </div>
+                    </div>
+                    <div class="container-fluid message-card d-flex">
+                        <div class="separator d-none d-md-block">
+                            <div class="dot"></div>
+                        </div>
+                        <div class="mx-2 p-2 d-flex align-items-center justify-content-center d-none d-md-block">
+                            <img src="../../Img/person_1.jpg" alt="Empleoyee" class="msg-img">
+                        </div>
+                        <div class="flex-grow-1 message-content m-2 p-2">
+                            <p class="m-0">Estoy aprendiendo a conducir y atropelle a un peaton en la calle principal,
+                                que deberia de hacer?</p>
+                        </div>
+                    </div>
+                    <div class="container-fluid message-card d-flex">
+                        <div class="separator d-none d-md-block">
+                            <div class="dot"></div>
+                        </div>
+                        <div class="mx-2 p-2 d-flex align-items-center justify-content-center d-none d-md-block">
+                            <img src="../../Img/person_2.jpg" alt="Empleoyee" class="msg-img">
+                        </div>
+                        <div class="flex-grow-1 message-content m-2 p-2">
+                            <p class="m-0">Me multaron por intentar darle una mordida a un transito, me estan llevando
+                                al corralon</p>
+                        </div>
+                    </div>
+                    <div class="container-fluid message-card d-flex">
+                        <div class="separator d-none d-md-block">
+                            <div class="dot"></div>
+                        </div>
+                        <div class="mx-2 p-2 d-flex align-items-center justify-content-center d-none d-md-block">
+                            <img src="../../Img/person_2.jpg" alt="Empleoyee" class="msg-img">
+                        </div>
+                        <div class="flex-grow-1 message-content m-2 p-2">
+                            <p class="m-0">Me multaron por intentar darle una mordida a un transito, me estan llevando
+                                al corralon</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="card-info text-center h-100">
-                    <h4>Numero de mensajes registrados</h4>
+                    <h4>Número de mensajes registrados</h4>
                     <i class="bi bi-envelope-fill fs-3 message-icon"></i>
                     <h4 class="fw-bold m-2">120</h4>
                     <p>Mensajes</p>
@@ -133,12 +190,33 @@
             </div>
             <div class="col-md-2">
                 <div class="card-info text-center h-100">
-                    <h4 class="m-0">Numero de</h4>
+                    <h4 class="m-0">Número de</h4>
                     <h4 class="m-0">usuarios</h4>
                     <h4 class="">registrados</h4>
                     <i class="bi bi-people-fill fs-3 user-icon"></i>
                     <h4 class="fw-bold m-2">1200</h4>
                     <p>Usuarios</p>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card-info">
+                    <div class="container-fluid">
+                        <p>Área destinada al uso del servicio</p>
+                    </div>
+                    <iframe Loading="lazy" allowfullscreen
+                        src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJSXXrm3icK4QR0r0VsIk7zEs&key=AIzaSyDHIadIvonx2ijHLk8KYDGIye1GvDFKBg0"></iframe>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-info h-100 d-flex align-items-center flex-column">
+                    <div class="container-fluid">
+                        <p class="m-0">Porcentaje de viajes activos</p>
+                    </div>
+                    <div class="flex-grow-1 d-flex align-items-center justify-content-center">
+                        <div class="circular-grafic">
+                            <h2 class="text-white progress-value">50%</h2>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -76,7 +76,7 @@ body {
     padding: 1rem;
     border-radius: 5rem;
     background-color: rgba(50, 153, 255, 0.5);
-    color: var(--bus-color);   
+    color: var(--bus-color);
 }
 
 .employee-icon::before {
@@ -93,6 +93,11 @@ body {
     color: var(--message-color);
 }
 
+.messages-container {
+    height: 300px;
+    overflow-y: scroll;
+}
+
 .user-icon::before {
     padding: 1rem;
     border-radius: 5rem;
@@ -100,15 +105,90 @@ body {
     color: var(--user-color);
 }
 
-.card-info:hover > i::before {
-    animation: rotar 0.2s ease-in-out; /* Llama a la animación al hacer hover */
+.separator {
+    width: 2px;
+    background-color: var(--white-color);
+    position: relative;
+}
+
+.dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: var(--white-color);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.dot::after {
+    content: '\200B';
+    width: 10px;
+    height: 10px;
+    background-color: var(--message-color);
+    border-radius: 5rem;
+}
+
+.message-content {
+    border-radius: 10px 10px 10px 0;
+    background-color: var(--message-color);
+    transition: all 0.2s ease-in-out;
+}
+
+.message-content:hover {
+    background-color: var(--gray-color);
+}
+
+.msg-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5rem;
+}
+
+.card-info:hover>i::before {
+    animation: rotar 0.2s ease-in-out;
+    /* Llama a la animación al hacer hover */
+}
+
+.circular-grafic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(var(--message-color) 180deg, var(--white-color) 5deg);
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.circular-grafic::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background-color: var(--semi-dark-blue);
+}
+
+.progress-value {
+    position: relative;
+}
+
+iframe {
+    width: 100%;
+    height: 300px;
 }
 
 @keyframes rotar {
     20% {
-        transform: rotate(-20deg); /* Rotar 90 grados a la derecha */
+        transform: rotate(-20deg);
+        /* Rotar 90 grados a la derecha */
     }
+
     80% {
-        transform: rotate(20deg); /* Volver a la posición normal */
+        transform: rotate(20deg);
+        /* Volver a la posición normal */
     }
 }
