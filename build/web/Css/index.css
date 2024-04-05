@@ -162,11 +162,6 @@ span {
     padding: 0.2rem;
 }
 
-.custom-size-image {
-    width: 500px; /* Ancho deseado */
-    height: auto; /* Altura ajustada automáticamente */
-}
-
 body.swal2-height-auto {
     height: 100% !important;
 }

@@ -11,6 +11,13 @@
     --gray-color: #202020;
     --orange-color: #FE7A36;
     --white-color: #E9F6FF;
+    --red-color: #d90429;
+
+    --location-color: #8dffcd;
+    --bus-color: #00a6fb;
+    --employee-color: #d86126;
+    --message-color: #9d4edd;
+    --user-color: #ffd100;
 }
 
 body {
@@ -29,7 +36,7 @@ body {
 }
 
 .side-menu {
-    width: 300px;
+    width: 250px;
     background-color: var(--semi-dark-blue);
     border-right: 2px solid var(--super-light-color);
     transition: all 0.2s ease-in-out;
@@ -37,9 +44,180 @@ body {
 
 .main-container {
     flex-grow: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
 }
 
 .flex-center {
     display: flex;
     align-items: center;
+}
+
+.top-bar {
+    background-color: var(--super-light-color);
+}
+
+.card-info {
+    padding: 1rem;
+    background-color: var(--semi-dark-blue);
+    color: var(--white-color);
+    border-radius: 0.2rem;
+}
+
+.location-icon::before {
+    padding: 1rem;
+    border-radius: 5rem;
+    background-color: rgba(89, 229, 208, 0.5);
+    color: var(--location-color);
+}
+
+.bus-icon::before {
+    padding: 1rem;
+    border-radius: 5rem;
+    background-color: rgba(50, 153, 255, 0.5);
+    color: var(--bus-color);
+}
+
+.employee-icon::before {
+    padding: 1rem;
+    border-radius: 5rem;
+    background-color: rgba(216, 97, 38, 0.5);
+    color: var(--employee-color);
+}
+
+.message-icon::before {
+    padding: 1rem;
+    border-radius: 5rem;
+    background-color: rgba(157, 78, 221, 0.5);
+    color: var(--message-color);
+}
+
+.messages-container {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.user-icon::before {
+    padding: 1rem;
+    border-radius: 5rem;
+    background-color: rgba(255, 209, 0, 0.5);
+    color: var(--user-color);
+}
+
+.separator {
+    width: 2px;
+    background-color: var(--white-color);
+    position: relative;
+}
+
+.dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: var(--white-color);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.dot::after {
+    content: '\200B';
+    width: 10px;
+    height: 10px;
+    background-color: var(--message-color);
+    border-radius: 5rem;
+}
+
+.message-content {
+    border-radius: 10px 10px 10px 0;
+    background-color: var(--message-color);
+    transition: all 0.2s ease-in-out;
+}
+
+.message-content:hover {
+    background-color: var(--gray-color);
+}
+
+.msg-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5rem;
+}
+
+.card-info:hover>i::before {
+    animation: rotar 0.2s ease-in-out;
+    /* Llama a la animación al hacer hover */
+}
+
+.circular-grafic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(var(--message-color) 180deg, var(--white-color) 5deg);
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.circular-grafic::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background-color: var(--semi-dark-blue);
+}
+
+.progress-value {
+    position: relative;
+}
+
+iframe {
+    width: 100%;
+    height: 300px;
+}
+
+table thead tr th {
+    color: var(--white-color) !important;
+    background-color: inherit !important;
+}
+
+table tbody tr th {
+    color: var(--white-color) !important;
+    background-color: inherit !important;
+    font-weight: 400;
+}
+
+table tbody tr {
+    transition: all 0.2s ease-in-out;
+}
+
+table tbody tr:hover {
+    background-color: var(--employee-color) !important;
+}
+
+.list-group li{
+    background-color: inherit !important;
+    color: var(--white-color) !important;
+}
+
+.list-group li:hover{
+    background-color: var(--red-color) !important;
+}
+
+@keyframes rotar {
+    20% {
+        transform: rotate(-20deg);
+        /* Rotar 90 grados a la derecha */
+    }
+
+    80% {
+        transform: rotate(20deg);
+        /* Volver a la posición normal */
+    }
 }

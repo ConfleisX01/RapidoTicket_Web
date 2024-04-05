@@ -114,11 +114,8 @@ async function getModuleReport() {
 // Funcion para obtener el modulo de ayuda usando sweetalert
 async function getModuleHelp() {
     Swal.fire({
-        imageUrl: "https://cdnb.artstation.com/p/assets/images/images/044/306/695/large/tim-reed-ruby-pose-01.jpg?1639631268",
+        imageUrl: "./Img/help_image.png",
         imageAlt: "A tall image",
-        customClass: {
-          image: 'custom-size-image' // Clase CSS para la imagen
-        },
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
