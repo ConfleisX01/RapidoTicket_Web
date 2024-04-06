@@ -40,6 +40,9 @@ async function cargarPanelCamiones() {
     contenedor.innerHTML = ""
     contenedor.innerHTML = html
     cargarControles()
+    cargarTablaCamiones()
+    let content = await example()
+    console.log(content)
   } catch (error) {
     console.log(error)
   }
@@ -61,16 +64,55 @@ function agregarCamion() {
         showConfirmButton: false,
         timer: 1500
       });
-      fixSwal()
+      fixSwal();
+      document.getElementById('tblCamiones').innerHTML = ""
+      cargarTablaCamiones()
     })
     .catch(error => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `${data.response}`,
+        text: `${error.message}`,
       });
       fixSwal()
     });
+}
+
+function cargarTablaCamiones() {
+  let table = document.getElementById('tblCamiones');
+  fetch('http://localhost:8080/DreamSoft_RapidoTicket/api/camion/getAllCamiones')
+    .then(response => response.json())
+    .then(data => {
+      data.forEach(element => {
+        let options = '';
+        element.destinos.forEach(destino => {
+          options += `<option>${destino}</option>`;
+        });
+        let content = `<tr>
+                        <th scope="row">${element.idCamion}</th>
+                        <th scope="row">${element.nombreConductor}</th>
+                        <th scope="row">
+                          <select class="form-select form-select-sm" aria-label="Small select example">
+                            ${options}
+                          </select>
+                        </th>
+                        <th scope="row">
+                          ${element.estatus = 1 ? '<span class = "badge text-bg-primary">Descansando</span>' : '<span class = "badge text-bg-success">En Viaje</span>'}
+                        </th>
+                      </tr>`;
+        table.innerHTML += content;
+      });
+    });
+}
+
+async function example() {
+  try {
+    const response = await fetch('http://localhost:8080/DreamSoft_RapidoTicket/api/camion/getAllCamiones')
+    const json = await response.json()
+    return json;
+  } catch(error) {
+    console.log(error)
+  }
 }
 
 function fixSwal() {

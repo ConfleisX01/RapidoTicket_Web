@@ -157,7 +157,7 @@ body {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: conic-gradient(var(--message-color) 180deg, var(--white-color) 5deg);
+    background: conic-gradient(var(--message-color) 20deg, var(--white-color) 5deg);
     position: relative;
     display: grid;
     place-items: center;
