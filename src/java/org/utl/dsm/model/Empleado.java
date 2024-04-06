@@ -2,26 +2,20 @@ package org.utl.dsm.model;
 
 public class Empleado {
     private int idEmpleado;
+    private String numeroEmpleado;
     private String usuario;
     private String contrasenia;
     private Persona persona;
 
-    public Empleado() {
-    }
-
-    public Empleado(int idEmpleado, String usuario, String contrasenia, Persona persona) {
+    public Empleado(int idEmpleado, String numeroEmpleado, String usuario, String contrasenia, Persona persona) {
         this.idEmpleado = idEmpleado;
+        this.numeroEmpleado = numeroEmpleado;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
         this.persona = persona;
     }
 
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public Empleado() {
     }
 
     public int getIdEmpleado() {
@@ -30,6 +24,14 @@ public class Empleado {
 
     public void setIdEmpleado(int idEmpleado) {
         this.idEmpleado = idEmpleado;
+    }
+
+    public String getNumeroEmpleado() {
+        return numeroEmpleado;
+    }
+
+    public void setNumeroEmpleado(String numeroEmpleado) {
+        this.numeroEmpleado = numeroEmpleado;
     }
 
     public String getUsuario() {
@@ -47,4 +49,14 @@ public class Empleado {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
+    
 }

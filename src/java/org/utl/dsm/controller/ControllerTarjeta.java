@@ -25,6 +25,7 @@ public class ControllerTarjeta {
             pstm.setFloat(3, t.getSaldo());
             pstm.setString(4, t.getFechaCaducidad());
             pstm.setInt(5, t.getUsuario().getIdUsuario());
+            
             pstm.execute();
             System.out.println("Tarjeta registrada exitosamente.");
             pstm.close();

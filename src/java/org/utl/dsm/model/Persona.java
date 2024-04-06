@@ -4,24 +4,16 @@ public class Persona {
     private int idPersona;
     private String nombre;
     private String apellidos;
-    private int telefono;
+    private String telefono;
 
-    public Persona() {
-    }
-
-    public Persona(int idPersona, String nombre, String apellidos, int telefono) {
+    public Persona(int idPersona, String nombre, String apellidos, String telefono) {
         this.idPersona = idPersona;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.telefono = telefono;
     }
 
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public Persona() {
     }
 
     public int getIdPersona() {
@@ -46,6 +38,14 @@ public class Persona {
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
     
     
