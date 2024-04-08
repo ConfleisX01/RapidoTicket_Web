@@ -37,7 +37,7 @@ public class RestDestino {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             out="""
-                {"response":"No se inserto el destino, vuelve a intentarlo"}
+                {"response":"No se inserto el destino, vuelve a intentarlo."}
                 """;
         }
         return Response.ok(out).build();
@@ -58,7 +58,7 @@ public class RestDestino {
         } catch (Exception ex) {
             ex.printStackTrace();
             out = """
-                  {"response" : "Error al obtener la lista de destinos"}
+                  {"response" : "Error al obtener la lista de destinos."}
                   """;
         }
         return Response.ok(out).build();

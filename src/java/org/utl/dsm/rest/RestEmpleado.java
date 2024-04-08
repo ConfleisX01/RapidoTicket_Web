@@ -42,7 +42,7 @@ public class RestEmpleado {
         return Response.ok(out).build();
     }
 
-    @Path("getAll")
+    @Path("getAllEmpleados")
     @Produces(MediaType.APPLICATION_JSON)
     @GET
     public Response getAll() {
