@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertir imagen a Base64</title>
+</head>
+
+<body>
+
+    <input type="file" id="fileInput" accept="image/*">
+    <img id="previewImage" src="" alt="Vista previa de la imagen" style="max-width: 300px;">
+
+    <div id="label"></div>
+
+    <script>
+        function setHi(contenido) {
+            document.getElementById('label').innerHTML = contenido
+        }
+        document.getElementById("fileInput").addEventListener('change', function () {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    var base64String = event.target.result;
+                    document.getElementById("previewImage").src = base64String;
+                    setHi(base64String)
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -29,6 +29,27 @@ public class ControllerCamion {
         }
     }
 
+    public void asignarConductor(String nombreConductor, int idCamion) {
+        String query = "UPDATE camion SET nombreConductor = (?) WHERE idCamion = (?)";
+        
+        try {
+            ConexionMysql connMySQL = new ConexionMysql();
+            Connection conn = connMySQL.open();
+            CallableStatement cstmt = (CallableStatement) conn.prepareCall(query);
+            
+            cstmt.setString(1, nombreConductor);
+            cstmt.setInt(2, idCamion);
+            
+            cstmt.execute();
+
+            cstmt.close();
+            conn.close();
+            connMySQL.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public void addDestinos(int idCamion, int posicionDestino, int idDestino) {
         String query = "CALL sp_Insertar_CamionDestino(?, ?, ?)";
 
@@ -52,6 +73,27 @@ public class ControllerCamion {
         }
     }
 
+    public void agregarQr(int idCamion, String qr) {
+        String query = "UPDATE camion SET qr = (?) WHERE idCamion = (?)";
+        
+        try {
+            ConexionMysql connMySQL = new ConexionMysql();
+            Connection conn = connMySQL.open();
+            CallableStatement cstmt = (CallableStatement) conn.prepareCall(query);
+            
+            cstmt.setString(1, qr);
+            cstmt.setInt(2, idCamion);
+            
+            cstmt.execute();
+
+            cstmt.close();
+            conn.close();
+            connMySQL.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public List<CamionDestinos> getAll() {
         String query = "SELECT * FROM view_camiones";
         List<CamionDestinos> destinos = new ArrayList<>();
@@ -67,14 +109,13 @@ public class ControllerCamion {
                 CamionDestinos cd = new CamionDestinos();
                 cd.setIdCamion(rs.getInt("idCamion"));
                 cd.setNombreConductor(rs.getString("nombreConductor"));
-
+                cd.setEstatus(rs.getInt("estatus"));
+                cd.setQr(rs.getString("qr"));
                 String destinosString = rs.getString("destinos");
                 String[] destinosArray = destinosString.split(",");
                 List<String> destinosList = new ArrayList<>(Arrays.asList(destinosArray));
                 cd.setDestinos(destinosList);
-
-                cd.setEstatus(rs.getInt("estatus"));
-
+                
                 destinos.add(cd);
             }
             conn.close();

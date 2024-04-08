@@ -7,15 +7,17 @@ public class CamionDestinos {
     private String nombreConductor;
     private List<String> destinos;
     private int estatus;
+    private String qr;
 
     public CamionDestinos() {
     }
 
-    public CamionDestinos(int idCamion, String nombreConductor, List<String> destinos, int estatus) {
+    public CamionDestinos(int idCamion, String nombreConductor, List<String> destinos, int estatus, String qr) {
         this.idCamion = idCamion;
         this.nombreConductor = nombreConductor;
         this.destinos = destinos;
         this.estatus = estatus;
+        this.qr = qr;
     }
 
     public int getIdCamion() {
@@ -49,4 +51,14 @@ public class CamionDestinos {
     public void setEstatus(int estatus) {
         this.estatus = estatus;
     }
+
+    public String getQr() {
+        return qr;
+    }
+
+    public void setQr(String qr) {
+        this.qr = qr;
+    }
+
+    
 }

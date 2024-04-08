@@ -4,22 +4,16 @@ public class Camion {
 
     private int idCamion;
     private String nombreConductor;
+    private String qr;
     private int estatus;
 
     public Camion() {
     }
 
-    public Camion(int idCamion, String nombreConductor, int estatus) {
+    public Camion(int idCamion, String nombreConductor, String qr, int estatus) {
         this.idCamion = idCamion;
         this.nombreConductor = nombreConductor;
-        this.estatus = estatus;
-    }
-
-    public int getEstatus() {
-        return estatus;
-    }
-
-    public void setEstatus(int estatus) {
+        this.qr = qr;
         this.estatus = estatus;
     }
 
@@ -39,4 +33,22 @@ public class Camion {
         this.nombreConductor = nombreConductor;
     }
 
+    public String getQr() {
+        return qr;
+    }
+
+    public void setQr(String qr) {
+        this.qr = qr;
+    }
+
+    public int getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(int estatus) {
+        this.estatus = estatus;
+    }
+
+    
+    
 }
