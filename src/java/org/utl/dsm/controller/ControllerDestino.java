@@ -6,6 +6,9 @@ package org.utl.dsm.controller;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import org.utl.dsm.db.ConexionMysql;
 import org.utl.dsm.model.Destino;
 
@@ -30,6 +33,32 @@ public class ControllerDestino {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return d;
+        }
+    }
+
+    public List<Destino> getAllDestinos() {
+        String query = "SELECT * FROM destino";
+        List<Destino> lista = new ArrayList<>();
+        try {
+            ConexionMysql connMysql = new ConexionMysql();
+            Connection conn = connMysql.open();
+            PreparedStatement pstm = conn.prepareStatement(query);
+
+            ResultSet rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                Destino d = new Destino();
+                d.setIdDestino(rs.getInt("idDestino"));
+                d.setDestinos(rs.getString("destinos"));
+                
+                lista.add(d);
+            }
+            
+            conn.close();
+            return lista;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
         }
     }
 }

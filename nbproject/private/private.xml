@@ -3,16 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/aleja/Desktop/RapidooTicket/RapidoTicket_Web/src/java/org/utl/dsm/controller/ControllerTarjeta.java</file>
-            <file>file:/C:/Users/aleja/Desktop/RapidooTicket/RapidoTicket_Web/src/java/org/utl/dsm/rest/RestTarjeta.java</file>
-            <file>file:/C:/Users/aleja/Desktop/RapidooTicket/RapidoTicket_Web/src/java/org/utl/dsm/model/Tarjeta.java</file>
-            <file>file:/C:/Users/aleja/Desktop/RapidooTicket/RapidoTicket_Web/src/java/org/utl/dsm/controller/ControllerEmpleado.java</file>
-            <file>file:/C:/Users/aleja/Desktop/RapidooTicket/RapidoTicket_Web/src/java/org/utl/dsm/model/Usuario.java</file>
-            <file>file:/C:/Users/aleja/Desktop/RapidooTicket/RapidoTicket_Web/src/java/org/utl/dsm/model/Persona.java</file>
-            <file>file:/C:/Users/aleja/Desktop/RapidooTicket/RapidoTicket_Web/src/java/org/utl/dsm/model/Empleado.java</file>
-            <file>file:/C:/Users/aleja/Desktop/RapidooTicket/RapidoTicket_Web/src/java/org/utl/dsm/controller/ControllerDestino.java</file>
-            <file>file:/C:/Users/aleja/Desktop/RapidooTicket/RapidoTicket_Web/src/java/org/utl/dsm/controller/ControllerCamion.java</file>
-            <file>file:/C:/Users/aleja/Desktop/RapidooTicket/RapidoTicket_Web/src/java/org/utl/dsm/model/CamionDestinos.java</file>
+            <file>file:/C:/Users/Black/Documents/NetBeansProjects/DreamSoft_RapidoTicket/src/java/org/utl/dsm/model/CamionDestinos.java</file>
+            <file>file:/C:/Users/Black/Documents/NetBeansProjects/DreamSoft_RapidoTicket/src/java/org/utl/dsm/controller/ControllerCamion.java</file>
+            <file>file:/C:/Users/Black/Documents/NetBeansProjects/DreamSoft_RapidoTicket/src/java/org/utl/dsm/rest/RestCamion.java</file>
         </group>
     </open-files>
 </project-private>

@@ -46,12 +46,34 @@ public class RestCamion extends Application{
         return Response.ok(out).build();
     }
     
+    @Path("asignarConductor")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response asignarConductor(@FormParam("nombreConductor") String nombreConductor,
+            @FormParam("idCamion") int idCamion) {
+        String out = "";
+        ControllerCamion cc = new ControllerCamion();
+        
+        try {
+            cc.asignarConductor(nombreConductor, idCamion);
+            out = """
+                  {"response" : "Conductor asignado"}
+                  """;
+        } catch(Exception ex) {
+            ex.printStackTrace();
+            out = """
+                  {"response" : "Error al asigar el conductor"}
+                  """;
+        }
+        return Response.ok(out).build();
+    }
+    
     @Path("agregarDestinos")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response agregarDestinos(@FormParam("idCamion") int idCamion,
             @FormParam("posicionDestino") int posicionDestino,
-            @FormParam("idDestino") int idDestino) {
+            @FormParam("idDestino") int idDestino) {    
         String out = "";
         ControllerCamion cc = new ControllerCamion();
         try {
@@ -65,6 +87,29 @@ public class RestCamion extends Application{
                   {"response" : "Error al agregar el destino"}
                   """;
         }
+        return Response.ok(out).build();
+    }
+    
+    @Path("agregarQr")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response agregarQr(@FormParam("idCamion") int idCamion,
+            @FormParam("qr") String qr) {
+        String out = "";
+        ControllerCamion cc = new ControllerCamion();
+        
+        try {
+            cc.agregarQr(idCamion, qr);
+            out = """
+                  {"response" : "QR generado con exito"}
+                  """;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            out = """
+                  {"response" : "Error al generar el QR"}
+                  """;
+        }
+        
         return Response.ok(out).build();
     }
     

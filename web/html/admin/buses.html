@@ -23,48 +23,41 @@
     </div>
     <div class="col-md-4 row g-2">
         <div class="col-12 card-info">
-            <p>Modifica los parametros del camion seleccionado</p>
-
-            <div class="container-fluid p-0 row">
+            <div class="container-fluid">
+                <h4>Modifica los parametros actuales del camion seleccionado</h4>
+            </div>
+            <div class="container-fluid p-2 row">
+                <p class="fw-bold">Asigna o cambia el conductor del camion seleccionado</p>
                 <div class="col-md-9">
                     <label for="slcConductor" class="form-label">Selecciona el conductor</label>
-                    <select class="form-select form-select-sm" aria-label="Small select example" id="slcConductor">
-                        <option value="1">Juan Pablo</option>
-                        <option value="2">Alejandra</option>
-                        <option value="3">Joel Ezequiel</option>
-                    </select>
+                    <select class="form-select form-select-sm" aria-label="Small select example"
+                        id="slcConductor"></select>
                 </div>
                 <div class="col-md-3 d-flex align-items-end justify-content-center">
-                    <input type="button" class="btn btn-primary" value="Asignar">
+                    <button class="btn btn-primary" id="btnAsignar">Asignar</button>
                 </div>
             </div>
-        </div>
-        <div class="col-12 card-info">
             <div class="container-fluid p-2">
-                <p>Lista de destinos del camion</p>
-            </div>
-            <div class="container-fluid p-2">
-                <div class="col-12 row g-2">
+                <p class="fw-bold">Lista de destinos del camion</p>
+                <div class="row g-2">
                     <div class="col-md-9">
                         <label for="slcDestinos" class="form-label">Selecciona los destinos</label>
-                        <select class="form-select form-select-sm" aria-label="Small select example" id="slcDestinos">
-                            <option value="1">Silao de la victoria</option>
-                            <option value="2">Monte del Coecillo</option>
-                            <option value="3">San Agustin de las Flores</option>
-                            <option value="4">La Hacienda</option>
-                        </select>
+                        <select class="form-select form-select-sm" aria-label="Small select example"
+                            id="slcDestinos"></select>
                     </div>
                     <div class="col-md-3 d-flex align-items-end justify-content-center">
-                        <input type="button" class="btn btn-primary" value="Agregar">
+                        <button class="btn btn-primary" id="btnAgregarDestinos">Agregar</button>
                     </div>
                 </div>
             </div>
             <div class="container-fluid p-2">
-                <ul class="list-group list-group-flush list-group-numbered">
-                    <li class="list-group-item">Silao de la Victoria</li>
-                    <li class="list-group-item">San Agustin de las Flores</li>
-                    <li class="list-group-item">Monte del Coecillo</li>
-                  </ul>
+                <ul class="list-group list-group-flush" id="listDestinos"></ul>
+            </div>
+            <div class="container-fluid text-center p-2" id="qrContainer">
+                <p>QR del camion</p>
+            </div>
+            <div class="container-fluid text-center p-2">
+                <button class="btn btn-primary" id="btnGenerarQr">Asignar QR</button>
             </div>
         </div>
     </div>
