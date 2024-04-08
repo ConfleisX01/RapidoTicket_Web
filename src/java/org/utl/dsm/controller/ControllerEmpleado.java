@@ -15,7 +15,7 @@ public class ControllerEmpleado {
 
     // TODO: Terminar la funcion para agregar el empleado
     public Empleado agregarEmpleado(Empleado e) {
-        String query = "CALL sp_insert_empleado(?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "CALL sp_insert_empleado(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             //System.out.println(e.getNumeroEmpleado() == null ? "Esta nulo" : "Contiene algo");
@@ -29,10 +29,10 @@ public class ControllerEmpleado {
             cstmt.setString(5, e.getUsuario());
             cstmt.setString(6, e.getContrasenia());
             cstmt.setString(7, e.getFoto());
-
-            cstmt.registerOutParameter(7, java.sql.Types.INTEGER);
+            
             cstmt.registerOutParameter(8, java.sql.Types.INTEGER);
-
+            cstmt.registerOutParameter(9, java.sql.Types.INTEGER);
+            //System.out.println(e.getFoto() == null ? "Esta nulo" : "Contiene algo");
             cstmt.execute();
             cstmt.close();
             conn.close();
@@ -66,6 +66,7 @@ public class ControllerEmpleado {
         e.setNumeroEmpleado(rs.getString("numeroEmpleado"));
         e.setUsuario(rs.getString("usuario"));
         e.setContrasenia(rs.getString("contrasenia"));
+        e.setFoto(rs.getString("foto"));
         Persona p = new Persona();
         p.setIdPersona(rs.getInt("idPersona"));
         p.setNombre(rs.getString("nombre"));
