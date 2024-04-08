@@ -108,7 +108,8 @@ public class ControllerCamion {
             while (rs.next()) {
                 CamionDestinos cd = new CamionDestinos();
                 cd.setIdCamion(rs.getInt("idCamion"));
-                cd.setNombreConductor(rs.getString("nombreConductor"));
+                cd.setIdEmpleado(rs.getInt("idEmpleado"));
+                cd.setNombreConductor(rs.getString("nombreEmpleado"));
                 cd.setEstatus(rs.getInt("estatus"));
                 cd.setQr(rs.getString("qr"));
                 String destinosString = rs.getString("destinos");

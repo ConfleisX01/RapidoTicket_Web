@@ -4,18 +4,20 @@ import java.util.List;
 
 public class CamionDestinos {
     private int idCamion;
-    private String nombreConductor;
     private List<String> destinos;
+    private int idEmpleado;
+    private String nombreConductor;
     private int estatus;
     private String qr;
 
     public CamionDestinos() {
     }
 
-    public CamionDestinos(int idCamion, String nombreConductor, List<String> destinos, int estatus, String qr) {
+    public CamionDestinos(int idCamion, List<String> destinos, int idEmpleado, String nombreConductor, int estatus, String qr) {
         this.idCamion = idCamion;
-        this.nombreConductor = nombreConductor;
         this.destinos = destinos;
+        this.idEmpleado = idEmpleado;
+        this.nombreConductor = nombreConductor;
         this.estatus = estatus;
         this.qr = qr;
     }
@@ -28,20 +30,28 @@ public class CamionDestinos {
         this.idCamion = idCamion;
     }
 
-    public String getNombreConductor() {
-        return nombreConductor;
-    }
-
-    public void setNombreConductor(String nombreConductor) {
-        this.nombreConductor = nombreConductor;
-    }
-
     public List<String> getDestinos() {
         return destinos;
     }
 
     public void setDestinos(List<String> destinos) {
         this.destinos = destinos;
+    }
+
+    public int getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    public String getNombreConductor() {
+        return nombreConductor;
+    }
+
+    public void setNombreConductor(String nombreConductor) {
+        this.nombreConductor = nombreConductor;
     }
 
     public int getEstatus() {
@@ -59,6 +69,6 @@ public class CamionDestinos {
     public void setQr(String qr) {
         this.qr = qr;
     }
-
+    
     
 }

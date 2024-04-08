@@ -65,7 +65,7 @@ async function cargarPanelCamiones() {
   }
 }
 
-function agregarCamion() {
+async function agregarCamion() {
   fetch('http://localhost:8080/DreamSoft_RapidoTicket/api/camion/agregarCamion')
     .then(response => {
       if (!response.ok) {
@@ -73,17 +73,19 @@ function agregarCamion() {
       }
       return response.json()
     })
-    .then(data => {
+    .then(async data => {
       Swal.fire({
         position: "top-end",
         icon: "success",
         title: `${data.response}`,
         showConfirmButton: false,
         timer: 1500
-      });
+      })
       fixSwal();
-      document.getElementById('tblCamiones').innerHTML = ""
-      cargarTablaCamiones()
+      document.getElementById('tblCamiones').innerHTML = "";
+      cargarTablaCamiones();
+      let ultimoId = await obtenerUltimoId();
+      generarQr(ultimoId);
     })
     .catch(error => {
       Swal.fire({
@@ -91,15 +93,18 @@ function agregarCamion() {
         title: "Oops...",
         text: `${error.message}`,
       });
-      fixSwal()
+      fixSwal();
     });
 }
+
 
 async function cargarTablaCamiones() {
   let table = document.getElementById('tblCamiones');
   let data = await getAllData('http://localhost:8080/DreamSoft_RapidoTicket/api/camion/getAllCamiones')
 
   let index = 0;
+
+  console.log(data)
 
   data.forEach(element => {
     let options = '';
@@ -162,21 +167,29 @@ function fixSwal() {
 }
 
 async function cargarCamion(index) {
+  let qrContainer = document.getElementById('qrContainer')
   let data = await getAllData('http://localhost:8080/DreamSoft_RapidoTicket/api/camion/getAllCamiones')
   let content = data[index - 1]
   let listDestinos = document.getElementById('listDestinos')
   listDestinos.innerHTML = ""
 
-  generarQr(content.idCamion)
-
   idCamionSeleccionado = content.idCamion
+
+  qrContainer.innerHTML = ""
+
+  if (content && content.qr) {
+    const img = document.createElement('img');
+    img.src = 'data:image/png;base64,' + content.qr;
+    qrContainer.appendChild(img)
+  }
 
   if (content && content.destinos) {
     content.destinos.forEach(destino => {
-      listDestinos.innerHTML += `<li class="list-group-item">${destino}</li>`
-    })
+      listDestinos.innerHTML += `<li class="list-group-item">${destino}</li>`;
+    });
   }
 }
+
 
 async function asignarConductor() {
   const URL = 'http://localhost:8080/DreamSoft_RapidoTicket/api/camion/asignarConductor'
@@ -287,20 +300,40 @@ async function agregarDestinos() {
 }
 
 async function generarQr(idCamion) {
-  let qrContainer = document.getElementById('qrContainer')
-  let btnGenerar = document.getElementById('btnGenerarQr')
+  const URL = 'http://localhost:8080/DreamSoft_RapidoTicket/api/camion/agregarQr'
   let response = await fetch(`https://quickchart.io/qr?text=${idCamion}&format=base64&size=200&margin=1`)
   let base64 = await response.text()
 
-  const img = document.createElement('img')
-  img.src = 'data:image/png;base64,' + base64
 
-  qrContainer.innerHTML = '';
-  qrContainer.appendChild(img)
+  const formData = new URLSearchParams()
+  formData.append('idCamion', idCamion)
+  formData.append('qr', base64)
 
-  btnGenerar.addEventListener('click', () => {
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: formData
+  }
 
-  })
+  try {
+    const response = await fetch(URL, requestOptions)
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: `${error.message}`,
+    });
+    fixSwal()
+  }
+}
+
+async function obtenerUltimoId() {
+  let data = await getAllData('http://localhost:8080/DreamSoft_RapidoTicket/api/camion/getAllCamiones')
+  let largo = data.length;
+
+  return data[largo - 1].idCamion
 }
 
 cargarMenu()
