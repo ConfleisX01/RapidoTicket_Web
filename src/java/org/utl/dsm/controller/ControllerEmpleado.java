@@ -28,6 +28,7 @@ public class ControllerEmpleado {
             cstmt.setString(4, e.getNumeroEmpleado());
             cstmt.setString(5, e.getUsuario());
             cstmt.setString(6, e.getContrasenia());
+            cstmt.setString(7, e.getFoto());
 
             cstmt.registerOutParameter(7, java.sql.Types.INTEGER);
             cstmt.registerOutParameter(8, java.sql.Types.INTEGER);

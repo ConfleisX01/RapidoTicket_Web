@@ -5,13 +5,15 @@ public class Empleado {
     private String numeroEmpleado;
     private String usuario;
     private String contrasenia;
+    private String foto;
     private Persona persona;
 
-    public Empleado(int idEmpleado, String numeroEmpleado, String usuario, String contrasenia, Persona persona) {
+    public Empleado(int idEmpleado, String numeroEmpleado, String usuario, String contrasenia, String foto, Persona persona) {
         this.idEmpleado = idEmpleado;
         this.numeroEmpleado = numeroEmpleado;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
+        this.foto = foto;
         this.persona = persona;
     }
 
@@ -50,6 +52,14 @@ public class Empleado {
         this.contrasenia = contrasenia;
     }
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
     public Persona getPersona() {
         return persona;
     }
@@ -58,5 +68,6 @@ public class Empleado {
         this.persona = persona;
     }
 
-    
+  
+  
 }
