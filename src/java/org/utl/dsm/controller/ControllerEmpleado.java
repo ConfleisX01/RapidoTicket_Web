@@ -15,25 +15,23 @@ public class ControllerEmpleado {
 
     // TODO: Terminar la funcion para agregar el empleado
     public Empleado agregarEmpleado(Empleado e) {
-        String query = "CALL sp_insert_empleado(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "CALL sp_insert_empleado(?, ?, ?, ?, ?, ?, ?)";
 
         try {
-            //System.out.println(e.getNumeroEmpleado() == null ? "Esta nulo" : "Contiene algo");
             ConexionMysql connMySQL = new ConexionMysql();
             Connection conn = connMySQL.open();
             CallableStatement cstmt = (CallableStatement) conn.prepareCall(query);
+
             cstmt.setString(1, e.getPersona().getNombre());
             cstmt.setString(2, e.getPersona().getApellidos());
             cstmt.setString(3, e.getPersona().getTelefono());
             cstmt.setString(4, e.getNumeroEmpleado());
-            cstmt.setString(5, e.getUsuario());
-            cstmt.setString(6, e.getContrasenia());
-            cstmt.setString(7, e.getFoto());
-            
-            cstmt.registerOutParameter(8, java.sql.Types.INTEGER);
-            cstmt.registerOutParameter(9, java.sql.Types.INTEGER);
-            //System.out.println(e.getFoto() == null ? "Esta nulo" : "Contiene algo");
+            cstmt.setString(5, e.getFoto());
+            cstmt.registerOutParameter(6, java.sql.Types.INTEGER); // v_idPersona
+            cstmt.registerOutParameter(7, java.sql.Types.INTEGER); // v_idEmpleado
+
             cstmt.execute();
+
             cstmt.close();
             conn.close();
             connMySQL.close();
@@ -41,6 +39,28 @@ public class ControllerEmpleado {
         } catch (Exception ex) {
             ex.printStackTrace();
             return e;
+        }
+    }
+
+    public void registrarEmpleado(String usuario, String contrasenia, String numeroEmpleado) {
+        String query = "UPDATE empleado SET usuario = (?), contrasenia = (?) WHERE numeroEmpleado = (?)";
+
+        try {
+            ConexionMysql connMySQL = new ConexionMysql();
+            Connection conn = connMySQL.open();
+            CallableStatement cstmt = (CallableStatement) conn.prepareCall(query);
+
+            cstmt.setString(1, usuario);
+            cstmt.setString(2, contrasenia);
+            cstmt.setString(3, numeroEmpleado);
+
+            cstmt.execute();
+
+            cstmt.close();
+            conn.close();
+            connMySQL.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -59,7 +79,7 @@ public class ControllerEmpleado {
         connMySQL.close();
         return empleado;
     }
-    
+
     public Empleado fill(ResultSet rs) throws SQLException {
         Empleado e = new Empleado();
         e.setIdEmpleado(rs.getInt("idEmpleado"));

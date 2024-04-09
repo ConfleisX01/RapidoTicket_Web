@@ -6,7 +6,7 @@
         <div class="card-info text-center h-100">
             <h4>Cantidad de destinos registrados</h4>
             <i class="bi bi-geo-alt-fill fs-3 location-icon"></i>
-            <h4 class="fw-bold m-2">20</h4>
+            <h4 class="fw-bold m-2" id="lbTotalDestinos"></h4>
             <p>Destinos</p>
         </div>
     </div>
@@ -14,7 +14,7 @@
         <div class="card-info text-center h-100">
             <h4>Cantidad de camiones registrados</h4>
             <i class="bi bi-bus-front-fill fs-3 bus-icon"></i>
-            <h4 class="fw-bold m-2">40</h4>
+            <h4 class="fw-bold m-2" id="lbTotalCamiones"></h4>
             <p>Camiones</p>
         </div>
     </div>
@@ -22,7 +22,7 @@
         <div class="card-info text-center h-100">
             <h4>Número de empleados registrados</h4>
             <i class="bi bi-person-arms-up fs-3 employee-icon"></i>
-            <h4 class="fw-bold m-2">80</h4>
+            <h4 class="fw-bold m-2" id="lbTotalEmpleados"></h4>
             <p>Empleados</p>
         </div>
     </div>
@@ -36,7 +36,7 @@
                     <div class="dot"></div>
                 </div>
                 <div class="mx-2 p-2 d-flex align-items-center justify-content-center d-none d-md-block">
-                    <img src="../../Img/person_1.jpg" alt="Empleoyee" class="msg-img">
+                        <img src="../../Img/person_1.jpg" alt="Empleoyee" class="msg-img">
                 </div>
                 <div class="flex-grow-1 message-content m-2 p-2">
                     <p class="m-0">Estoy aprendiendo a conducir y atropelle a un peaton en la calle principal,
@@ -126,8 +126,8 @@
                 <p class="m-0">Porcentaje de viajes activos</p>
             </div>
             <div class="flex-grow-1 d-flex align-items-center justify-content-center flex-column">
-                <div class="circular-grafic">
-                    <h2 class="text-white progress-value">50%</h2>
+                <div class="circular-grafic" id="circular-grafic">
+                    <h2 class="text-white progress-value" id="lbPorcentaje"></h2>
                 </div>
                 <div class="container-fluid p-2">
                     <p>Viajes que se estan ejecutando en este momento</p>

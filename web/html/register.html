@@ -1,37 +1,29 @@
 <div class="row p-0 m-0 h-100" id="register-card">
     <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
-        <img src="Img/Logo Vector.svg" alt="Logo de RapidoTicket" width="64px">
-        <h4 class="m-0">Rápido<span>Ticket</span></h4>
+        <img src="Img/Logo Vector.svg" alt="Logo de RápidoTicket" width="64px">
+        <h4 class="m-0">Rápido<span class="text-primary">Ticket</span></h4>
     </div>
     <div class="col-md-6 p-5 d-flex align-items-center justify-content-center text-dark">
         <div class="card-login p-4 row">
             <h2 class="fw-bold">Crear Cuenta</h2>
-            <p>¿Ya tienes cuenta? <span class="pointer" id="btnLoginAccount">Iniciar Sesión</span></p>
-            <div class="py-2 col-6">
-                <label for="txtEmail">Nombre</label>
-                <input type="text" placeholder="" class="input-text">
-            </div>
-            <div class="py-2 col-6">
-                <label for="txtEmail">Apellidos</label>
-                <input type="text" placeholder="" class="input-text">
+            <p>¿Ya tienes cuenta? <span class="pointer text-primary" id="btnLoginAccount">Iniciar Sesión</span></p>
+            <div class="py-2 col-12">
+                <label for="txtNumeroEmpleado">Número de Empleado</label>
+                <input type="text" placeholder="Ingresa tu número de empleado" class="form-control" id="txtNumeroEmpleado">
             </div>
             <div class="py-2 col-12">
-                <label for="txtEmail">Número de empleado</label>
-                <input type="number" placeholder="" class="input-text">
+                <label for="txtUsuario">Usuario</label>
+                <input type="text" placeholder="Crea tu usuario" class="form-control" id="txtEmpleadoRegistro">
             </div>
             <div class="py-2 col-12">
-                <label for="txtEmail">Dirección de correo</label>
-                <input type="email" placeholder="" class="input-text">
-            </div>
-            <div class="py-2 col-12">
-                <label for="txtPassword">Contraseña</label>
-                <input type="password" class="input-text">
+                <label for="txtContraseña">Contraseña</label>
+                <input type="password" placeholder="Crea tu contraseña" class="form-control" id="txtEmpleadoContrasenia">
             </div>
             <div class="container-fluid p-0 d-flex justify-content-end align-items-center">
-                <button class="btn-primary" id="btnContinueCreate">Continuar <i class="bi bi-arrow-right"></i></button>
+                <button class="btn btn-primary" id="btnContinueCreate">Continuar <i class="bi bi-arrow-right"></i></button>
             </div>
             <div class="container-fluid p-0 py-2">
-                <p class="text-muted m-0">Consulta nuestras <span>políticas de privacidad</span>. Software desarrollado por <span>DreamSoft</span>.</p>
+                <p class="text-muted m-0">Consulta nuestras <span class="text-primary">políticas de privacidad</span>. Software desarrollado por <span class="text-primary">DreamSoft</span>.</p>
             </div>
         </div>
     </div>

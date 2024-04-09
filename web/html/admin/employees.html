@@ -1,0 +1,59 @@
+<div class="container-fluid top-bar p-2 text-white">
+    <h4>Panel de Empleados</h4>
+</div>
+
+<div class="container-fluid p-2 row g-3">
+    <div class="col-md-8">
+        <div class="card-info table-responsive">
+            <div class="container-fluid p-0">
+                <p class="m-0">Registros de todos los empleados</p>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID Empleado</th>
+                        <th scope="col">Foto del Empleado</th>
+                        <th scope="col">Número de Empleado</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Estatus Registro</th>
+                    </tr>
+                </thead>
+                <tbody id="tblEmpleados"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-4 row g-2">
+        <div class="col-12 card-info">
+            <div class="container-fluid">
+                <h4>Agregar o Modificar Empleados</h4>
+            </div>
+            <div class="container-fluid row">
+                <div class="col-md-12 p-2">
+                    <label for="txtNumeroEmpleado" class="form-label">Número de Empleado</label>
+                    <input type="text" class="form-control" placeholder="Ingrese el número de empleado" id="txtNumeroEmpleado">
+                </div>
+                <div class="col-md-6 p-2">
+                    <label for="txtNombreEmpleado" class="form-label">Nombre del Empleado</label>
+                    <input type="text" class="form-control" placeholder="Ingrese el nombre del empleado" id="txtNombreEmpleado">
+                </div>
+                <div class="col-md-6 p-2">
+                    <label for="txtApellidosEmpleado" class="form-label">Apellidos del Empleado</label>
+                    <input type="text" class="form-control" placeholder="Ingrese los apellidos del empleado" id="txtApellidosEmpleado">
+                </div>
+                <div class="col-md-12 p-2">
+                    <label for="txtTelefonoEmpleado" class="form-label">Teléfono del Empleado</label>
+                    <input type="text" class="form-control" placeholder="Ingrese el teléfono del empleado" id="txtTelefonoEmpleado">
+                </div>
+                <div class="col-md-12 p-2">
+                    <label for="txtFoto" class="form-label">Foto del Empleado</label>
+                    <input type="file" class="form-control" id="txtFoto">
+                </div>
+                <div class="col-md-12 p-2 text-center">
+                    <button class="btn btn-primary" id="btnAgregarEmpleado">Agregar Empleado</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

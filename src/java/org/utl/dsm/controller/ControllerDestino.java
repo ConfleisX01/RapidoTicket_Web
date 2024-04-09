@@ -18,21 +18,18 @@ import org.utl.dsm.model.Destino;
  */
 public class ControllerDestino {
 
-    public Destino agregarCamion(Destino d) {
+    public void agregarDestino(String destino) {
         String query = "INSERT INTO destino(destinos) VALUES(?)";
         try {
             ConexionMysql connMysql = new ConexionMysql();
             Connection conn = connMysql.open();
             PreparedStatement pstm = conn.prepareStatement(query);
-            pstm.setString(1, d.getDestinos());
+            pstm.setString(1, destino);
             pstm.execute();
-            System.out.println("El destino o destinos son: " + d.getDestinos());
             pstm.close();
             connMysql.close();
-            return d;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return d;
         }
     }
 

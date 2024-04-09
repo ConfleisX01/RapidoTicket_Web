@@ -29,17 +29,17 @@ public class ControllerCamion {
         }
     }
 
-    public void asignarConductor(String nombreConductor, int idCamion) {
-        String query = "UPDATE camion SET nombreConductor = (?) WHERE idCamion = (?)";
-        
+    public void asignarConductor(int idEmpleado, int idCamion) {
+        String query = "UPDATE camion SET idEmpleado = (?) WHERE idCamion = (?)";
+
         try {
             ConexionMysql connMySQL = new ConexionMysql();
             Connection conn = connMySQL.open();
             CallableStatement cstmt = (CallableStatement) conn.prepareCall(query);
-            
-            cstmt.setString(1, nombreConductor);
+
+            cstmt.setInt(1, idEmpleado);
             cstmt.setInt(2, idCamion);
-            
+
             cstmt.execute();
 
             cstmt.close();
@@ -49,7 +49,7 @@ public class ControllerCamion {
             ex.printStackTrace();
         }
     }
-    
+
     public void addDestinos(int idCamion, int posicionDestino, int idDestino) {
         String query = "CALL sp_Insertar_CamionDestino(?, ?, ?)";
 
@@ -58,7 +58,6 @@ public class ControllerCamion {
             Connection conn = connMySQL.open();
             CallableStatement cstmt = (CallableStatement) conn.prepareCall(query);
 
-            System.out.println(idCamion + " " + posicionDestino + " " + idDestino);
             cstmt.setInt(1, idCamion);
             cstmt.setInt(2, posicionDestino);
             cstmt.setInt(3, idDestino);
@@ -75,15 +74,15 @@ public class ControllerCamion {
 
     public void agregarQr(int idCamion, String qr) {
         String query = "UPDATE camion SET qr = (?) WHERE idCamion = (?)";
-        
+
         try {
             ConexionMysql connMySQL = new ConexionMysql();
             Connection conn = connMySQL.open();
             CallableStatement cstmt = (CallableStatement) conn.prepareCall(query);
-            
+
             cstmt.setString(1, qr);
             cstmt.setInt(2, idCamion);
-            
+
             cstmt.execute();
 
             cstmt.close();
@@ -93,6 +92,47 @@ public class ControllerCamion {
             ex.printStackTrace();
         }
     }
+
+    public void activar(int idCamion) {
+        String query = "UPDATE camion SET estatus = 1 WHERE idCamion = (?)";
+
+        try {
+            ConexionMysql connMySQL = new ConexionMysql();
+            Connection conn = connMySQL.open();
+            CallableStatement cstmt = (CallableStatement) conn.prepareCall(query);
+
+            cstmt.setInt(1, idCamion);
+
+            cstmt.execute();
+
+            cstmt.close();
+            conn.close();
+            connMySQL.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void desactivar(int idCamion) {
+    String query = "UPDATE camion SET estatus = 0 WHERE idCamion = ?";
+
+    try {
+        ConexionMysql connMySQL = new ConexionMysql();
+        Connection conn = connMySQL.open();
+        CallableStatement cstmt = (CallableStatement) conn.prepareCall(query);
+
+        cstmt.setInt(1, idCamion);
+
+        cstmt.execute();
+
+        cstmt.close();
+        conn.close();
+        connMySQL.close();
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+}
+
     
     public List<CamionDestinos> getAll() {
         String query = "SELECT * FROM view_camiones";
@@ -116,7 +156,7 @@ public class ControllerCamion {
                 String[] destinosArray = destinosString.split(",");
                 List<String> destinosList = new ArrayList<>(Arrays.asList(destinosArray));
                 cd.setDestinos(destinosList);
-                
+
                 destinos.add(cd);
             }
             conn.close();

@@ -157,7 +157,10 @@ body {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: conic-gradient(var(--message-color) 20deg, var(--white-color) 5deg);
+    background: conic-gradient(
+        var(--message-color) calc((var(--active-camiones) / var(--total-camiones)) * 360deg), 
+        var(--white-color) calc((var(--active-camiones) / var(--total-camiones)) * 360deg)
+    );
     position: relative;
     display: grid;
     place-items: center;
@@ -219,4 +222,31 @@ table tbody tr:hover {
         transform: rotate(20deg);
         /* Volver a la posición normal */
     }
+}
+
+.avatar-img {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.avatar-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    z-index: 1;
+    border: 1px solid var(--gray-color);
+}
+
+.avatar-img::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bus-color);
+    transform: scale(1.1);
+    border-radius: 50%;
 }

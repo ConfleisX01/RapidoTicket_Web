@@ -42,6 +42,29 @@ public class RestEmpleado {
         return Response.ok(out).build();
     }
 
+    @Path("registrarEmpleado")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response registrarEmpleado(@FormParam("usuario") String usuario,
+            @FormParam("contrasenia") String contrasenia,
+            @FormParam("numeroEmpleado") String numeroEmpleado) {
+        String out = "";
+        ControllerEmpleado ce = new ControllerEmpleado();
+        
+        try {
+            ce.registrarEmpleado(usuario, contrasenia, numeroEmpleado);
+            out = """
+                  {"response" : "Empleado registrado con exito"}
+                  """; 
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            out = """
+                  {"response" : "Error al registrar el empleado"}
+                  """;
+        }
+        return Response.ok(out).build();
+    }
+    
     @Path("getAllEmpleados")
     @Produces(MediaType.APPLICATION_JSON)
     @GET

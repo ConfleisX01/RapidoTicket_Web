@@ -1,5 +1,6 @@
 // Importamos todas las funciones del controlador de cuentas
 import * as ca from './ControllerAccount.js'
+import * as cv from './comenzarViaje.js'
 
 // Funcion para crear los controladores y los botones para cambiar el contenido de la pagina
 function startControllers() {
@@ -73,7 +74,7 @@ async function getAccountContent() {
     let btnContinueLogin = document.getElementById('btnContinueLogin')
 
     btnContinueLogin.addEventListener('click', () => {
-        // TODO: Crear las funciones para varificar el login del usuario
+        // TODO: Crear las funciones para verificar el login del usuario
 
         window.location.href = './html/admin/index.html'
     })
@@ -81,7 +82,7 @@ async function getAccountContent() {
     let btnContinueCreate = document.getElementById('btnContinueCreate')
 
     btnContinueCreate.addEventListener('click', () => {
-        // TODO: Crear las funciones para crear la cuenta del usuario
+        ca.registrarUsuario()
     })
 }
 
@@ -91,6 +92,15 @@ async function getModuleCode() {
 
     //Agregamos el contenido
     document.getElementById('dinamic-container').innerHTML = content
+
+    // Cargamos los controles
+    let btnComenzarViaje = document.getElementById('btnComenzarViaje')
+
+    btnComenzarViaje.addEventListener('click', () => {
+        cv.comenzarViaje()
+    })
+    
+    cv.VerificarViaje()
 }
 
 // Funcion para aplicar el contenido de los modulos en el contenedor principal

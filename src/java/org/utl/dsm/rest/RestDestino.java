@@ -17,38 +17,37 @@ import org.utl.dsm.model.Destino;
  *
  * @author aleja
  */
-
 @Path("destino")
 public class RestDestino {
+
     @Path("agregarDestino")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response agregarDestino(@FormParam("destino") String cadena){
+    public Response agregarDestino(@FormParam("destino") String destino) {
         Gson gson = new Gson();
         
-        String out="";
+        String out = "";
         try {
-            Destino destino = gson.fromJson(cadena, Destino.class);
             ControllerDestino cd = new ControllerDestino();
-            cd.agregarCamion(destino);
-            out="""
+            cd.agregarDestino(destino);
+            out = """
                 {"response":"El destino ha sido insertado y guardado con éxito."}
                 """;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            out="""
+            out = """
                 {"response":"No se inserto el destino, vuelve a intentarlo."}
                 """;
         }
         return Response.ok(out).build();
     }
- 
+    
     @Path("getAllDestinos")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllDestinos() {
         String out = "";
-        List<Destino> lista = new ArrayList<>(); 
+        List<Destino> lista = new ArrayList<>();        
         ControllerDestino cd = new ControllerDestino();
         
         try {

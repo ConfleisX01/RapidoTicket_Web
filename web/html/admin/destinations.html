@@ -1,38 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="container-fluid top-bar p-2 text-white">
+    <h4>Panel de Destinos</h4>
+</div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convertir imagen a Base64</title>
-</head>
-
-<body>
-
-    <input type="file" id="fileInput" accept="image/*">
-    <img id="previewImage" src="" alt="Vista previa de la imagen" style="max-width: 300px;">
-
-    <div id="label"></div>
-
-    <script>
-        function setHi(contenido) {
-            document.getElementById('label').innerHTML = contenido
-        }
-        document.getElementById("fileInput").addEventListener('change', function () {
-            var file = this.files[0];
-            if (file) {
-                var reader = new FileReader();
-                reader.onload = function (event) {
-                    var base64String = event.target.result;
-                    document.getElementById("previewImage").src = base64String;
-                    setHi(base64String)
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-    </script>
-
-</body>
-
-</html>
+<div class="container-fluid p-2 row g-3">
+    <div class="col-md-8">
+        <div class="card-info table-responsive">
+            <div class="container-fluid p-0">
+                <p class="m-0">Registros de todos los destinos</p>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID Destino</th>
+                        <th scope="col">Nombre del Destino</th>
+                    </tr>
+                </thead>
+                <tbody id="tblDestinos"></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-4 row g-2">
+        <div class="col-12 card-info">
+            <div class="container-fluid">
+                <h4>Agregar o Modificar Destinos</h4>
+            </div>
+            <div class="container-fluid row">
+                <div class="col-md-12 p-2">
+                    <label for="txtNombreDestino" class="form-label">Nombre del Destino</label>
+                    <input type="text" class="form-control" placeholder="Ingresa el nombre del destino" id="txtNombreDestino">
+                </div>
+                <div class="col-md-12 p-2 text-center">
+                    <button class="btn btn-primary" id="btnAgregarDestino">Agregar Destino</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

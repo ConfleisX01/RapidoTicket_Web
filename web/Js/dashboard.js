@@ -1,8 +1,15 @@
+// Importamos todas las funciones del controlador de empleados
+import * as ce from './empleados.js'
+import * as cd from './destinos.js'
+import * as cg from './general.js'
+
 let idCamionSeleccionado;
 
 function cargarMenu() {
   let btnVistaGeneral = document.getElementById('btnVistaGeneral')
   let btnPanelCamiones = document.getElementById('btnPanelCamiones')
+  let btnPanelEmpleados = document.getElementById('btnPanelEmpleados')
+  let btnPanelDestinos = document.getElementById('btnPanelDestinos')
 
   btnVistaGeneral.addEventListener("click", () => {
     cargarVistaGeneral()
@@ -10,6 +17,14 @@ function cargarMenu() {
 
   btnPanelCamiones.addEventListener('click', () => {
     cargarPanelCamiones()
+  })
+
+  btnPanelEmpleados.addEventListener('click', () => {
+    cargarPanelEmpleados()
+  })
+
+  btnPanelDestinos.addEventListener('click', () => {
+    cargarPanelDestinos()
   })
 }
 
@@ -43,6 +58,7 @@ async function cargarVistaGeneral() {
     const html = await response.text()
     contenedor.innerHTML = ""
     contenedor.innerHTML = html
+    cg.cargarContenido()
   } catch (error) {
     console.log(error)
   }
@@ -60,6 +76,36 @@ async function cargarPanelCamiones() {
     cargarTablaCamiones()
     cargarListaConductores()
     cargarListaDestinos()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function cargarPanelEmpleados() {
+  let contenedor = document.getElementById('main-container')
+
+  try {
+    const response = await fetch('./employees.html')
+    const html = await response.text()
+    contenedor.innerHTML = ""
+    contenedor.innerHTML = html
+    ce.cargarControles()
+    ce.cargarTabla()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function cargarPanelDestinos() {
+  let contenedor = document.getElementById('main-container')
+
+  try {
+    const response = await fetch('./destinations.html')
+    const html = await response.text()
+    contenedor.innerHTML = ""
+    contenedor.innerHTML = html
+    cd.cargarControles()
+    cd.cargarTabla()
   } catch (error) {
     console.log(error)
   }
@@ -97,22 +143,16 @@ async function agregarCamion() {
     });
 }
 
-
 async function cargarTablaCamiones() {
   let table = document.getElementById('tblCamiones');
   let data = await getAllData('http://localhost:8080/DreamSoft_RapidoTicket/api/camion/getAllCamiones')
 
-  let index = 0;
-
-  console.log(data)
-
   data.forEach(element => {
     let options = '';
-    index = index + 1;
     element.destinos.forEach(destino => {
       options += `<option>${destino}</option>`;
     });
-    let content = `<tr onclick = "cargarCamion(${index})">
+    let content = `<tr data-id="${element.idCamion}">
                         <th scope="row">${element.idCamion}</th>
                         <th scope="row">${element.nombreConductor}</th>
                         <th scope="row">
@@ -120,17 +160,22 @@ async function cargarTablaCamiones() {
                             ${options}
                           </select>
                         </th>
-                        <th scope="row">
-                          ${element.estatus = 1 ? '<span class = "badge text-bg-primary">Descansando</span>' : '<span class = "badge text-bg-success">En Viaje</span>'}
-                        </th>
+                        <th scope="col"><span class="${element.estatus == 0 ? "badge text-bg-secondary" : "badge text-bg-primary"}">${element.estatus == 0 ? "Descansando" : "En Viaje"}</span></th>
                       </tr>`
     table.innerHTML += content
   })
+
+  let filas = table.getElementsByTagName('tr');
+  for (let i = 0; i < filas.length; i++) {
+    filas[i].addEventListener('click', function () {
+      cargarCamion(filas[i].getAttribute('data-id'));
+    });
+  }
 }
 
 async function cargarListaConductores() {
   let slcEmpleados = document.getElementById('slcConductor')
-  let data = await getAllData('http://localhost:8080/DreamSoft_RapidoTicket/api/empleado/getAll');
+  let data = await getAllData('http://localhost:8080/DreamSoft_RapidoTicket/api/empleado/getAllEmpleados');
 
   data.forEach(element => {
     let option = document.createElement('option')
@@ -190,22 +235,21 @@ async function cargarCamion(index) {
   }
 }
 
-
 async function asignarConductor() {
   const URL = 'http://localhost:8080/DreamSoft_RapidoTicket/api/camion/asignarConductor'
   let slcConductor = document.getElementById('slcConductor')
   let idConductor = slcConductor.value
-  let data = await getAllData('http://localhost:8080/DreamSoft_RapidoTicket/api/empleado/getAll')
-  let nombreConductor = ''
+  let data = await getAllData('http://localhost:8080/DreamSoft_RapidoTicket/api/empleado/getAllEmpleados')
+  let idEmpleado
 
   data.forEach(element => {
     if (element.idEmpleado == idConductor) {
-      nombreConductor = element.persona.nombre
+      idEmpleado = element.idEmpleado
     }
   });
 
   const formData = new URLSearchParams()
-  formData.append('nombreConductor', nombreConductor)
+  formData.append('idEmpleado', idEmpleado)
   formData.append('idCamion', idCamionSeleccionado)
 
   const requestOptions = {
