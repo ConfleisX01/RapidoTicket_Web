@@ -1,6 +1,7 @@
 // Importamos todas las funciones del controlador de cuentas
 import * as ca from './ControllerAccount.js'
 import * as cv from './comenzarViaje.js'
+import * as cr from './enviarReporte.js'
 
 // Funcion para crear los controladores y los botones para cambiar el contenido de la pagina
 function startControllers() {
@@ -8,7 +9,6 @@ function startControllers() {
     let btnLogin = document.getElementById('btnLogin')
     let btnCode = document.getElementById('btnCode')
     let btnReport = document.getElementById('btnReport')
-    let btnHelp = document.getElementById('btnHelp')
 
     btnIndex.addEventListener('click', () => {
         getModuleHome()
@@ -24,10 +24,6 @@ function startControllers() {
 
     btnReport.addEventListener('click', () => {
         getModuleReport()
-    })
-
-    btnHelp.addEventListener('click', () => {
-        getModuleHelp()
     })
 }
 
@@ -69,15 +65,13 @@ async function getAccountContent() {
         document.getElementById('login-card').style.display = 'flex'
     })
 
-    // TODO: Asignar los botones para poder iniciar sesion y crear una cuenta nueva obteniendo el contenido de el formulario
-
     let btnContinueLogin = document.getElementById('btnContinueLogin')
     
     ca.verificarLogin()
 
     btnContinueLogin.addEventListener('click', () => {
         ca.loginEmpleado()
-        //window.location.href = './html/admin/index.html'
+        window.location.href = './html/admin/index.html';
     })
 
     let btnContinueCreate = document.getElementById('btnContinueCreate')
@@ -90,6 +84,8 @@ async function getAccountContent() {
 // Funcion para obtener el modulo de ingresar codigo para comenzar el viaje
 async function getModuleCode() {
     let content = await getModule('./html/code.html')
+
+    ca.verificarLogin()
 
     //Agregamos el contenido
     document.getElementById('dinamic-container').innerHTML = content
@@ -115,24 +111,13 @@ async function getModuleReport() {
     let content = await getModule('./html/report.html');
     applyContent(content)
 
+    ca.verificarLogin()
+
     let btnSendMessaje = document.getElementById('btnSendMessage')
 
     btnSendMessaje.addEventListener('click', () => {
-        // TODO: Crear la funcion para enviar el reporte obteniendo el contenido del formulario
+        cr.enviarReporte()
     })
-}
-
-// Funcion para obtener el modulo de ayuda usando sweetalert
-async function getModuleHelp() {
-    Swal.fire({
-        imageUrl: "./Img/help_image.png",
-        imageAlt: "A tall image",
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Confirmar'
-      });
-      fixSwal()
 }
 
 // Funcion para obtener el html de los modulos pasando la url como parametro

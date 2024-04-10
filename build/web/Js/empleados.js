@@ -51,6 +51,7 @@ async function agregarEmpleado() {
     try {
         const response = await fetch(URL, requestOptions)
         if (response.ok) {
+            limpiarCampos()
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -59,6 +60,7 @@ async function agregarEmpleado() {
                 timer: 1500
             });
             fixSwal()
+            cargarTabla()
         } else {
             Swal.fire({
                 icon: "error",
@@ -76,6 +78,14 @@ async function agregarEmpleado() {
         fixSwal()
     }
 }
+
+function limpiarCampos() {
+    document.getElementById('txtNombreEmpleado').value = '';
+    document.getElementById('txtApellidosEmpleado').value = '';
+    document.getElementById('txtNumeroEmpleado').value = '';
+    document.getElementById('txtTelefonoEmpleado').value = '';
+}
+
 
 function verificarInputs() {
     let nombre = document.getElementById('txtNombreEmpleado').value
@@ -115,6 +125,8 @@ export async function cargarTabla() {
     const URL = 'http://localhost:8080/DreamSoft_RapidoTicket/api/empleado/getAllEmpleados'
     let data = await getAllData(URL);
     let tblEmpleados = document.getElementById('tblEmpleados')
+
+    tblEmpleados.innerHTML = ""
 
     data.forEach(element => {
         let content = `

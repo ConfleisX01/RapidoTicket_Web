@@ -10,6 +10,7 @@ function cargarMenu() {
   let btnPanelCamiones = document.getElementById('btnPanelCamiones')
   let btnPanelEmpleados = document.getElementById('btnPanelEmpleados')
   let btnPanelDestinos = document.getElementById('btnPanelDestinos')
+  let btnCerrarSesion = document.getElementById('btnCerrarSesion')
 
   btnVistaGeneral.addEventListener("click", () => {
     cargarVistaGeneral()
@@ -25,6 +26,11 @@ function cargarMenu() {
 
   btnPanelDestinos.addEventListener('click', () => {
     cargarPanelDestinos()
+  })
+
+  btnCerrarSesion.addEventListener('click', () => {
+    localStorage.removeItem('token')
+    window.location.href = '../../index.html'
   })
 }
 

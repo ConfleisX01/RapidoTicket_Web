@@ -1,48 +1,58 @@
 export async function comenzarViaje() {
     const URL = 'http://localhost:8080/DreamSoft_RapidoTicket/api/camion/activar'
     let idCamion = document.getElementById('txtIdCamion').value
+    let empleado = localStorage.getItem('numeroEmpleado')
 
-    if (verificarInputs()) {
-        const formData = new URLSearchParams()
-        formData.append('idCamion', idCamion)
+    if (empleado) {
+        if (verificarInputs()) {
+            const formData = new URLSearchParams()
+            formData.append('idCamion', idCamion)
 
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: formData
-        }
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData
+            }
 
-        try {
-            const response = await fetch(URL, requestOptions)
-            if (response.ok) {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Comenzando Viaje",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                guardarViaje(idCamion)
-                VerificarViaje()
-                fixSwal()
-            } else {
+            try {
+                const response = await fetch(URL, requestOptions)
+                if (response.ok) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Comenzando Viaje",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    guardarViaje(idCamion)
+                    VerificarViaje()
+                    fixSwal()
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Error al comenzar el viaje",
+                    });
+                    fixSwal()
+                }
+            } catch (error) {
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text: "Error al comenzar el viaje",
+                    text: `${error.message}`,
                 });
                 fixSwal()
             }
-        } catch (error) {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: `${error.message}`,
-            });
-            fixSwal()
         }
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Tienes que iniciar sesion para poder comenzar el viaje",
+        });
+        fixSwal()
     }
 }
 
@@ -89,45 +99,45 @@ async function eliminarViaje() {
     const idCamion = localStorage.getItem('idCamion')
 
     const formData = new URLSearchParams()
-        formData.append('idCamion', idCamion)
+    formData.append('idCamion', idCamion)
 
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: formData
-        }
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: formData
+    }
 
-        try {
-            const response = await fetch(URL, requestOptions)
-            if (response.ok) {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Comenzando Viaje",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                guardarViaje(idCamion)
-                VerificarViaje()
-                fixSwal()
-            } else {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Error al comenzar el viaje",
-                });
-                fixSwal()
-            }
-        } catch (error) {
+    try {
+        const response = await fetch(URL, requestOptions)
+        if (response.ok) {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Comenzando Viaje",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            guardarViaje(idCamion)
+            VerificarViaje()
+            fixSwal()
+        } else {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: `${error.message}`,
+                text: "Error al comenzar el viaje",
             });
             fixSwal()
         }
+    } catch (error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `${error.message}`,
+        });
+        fixSwal()
+    }
 
     localStorage.removeItem('idCamion');
     regresarModulo()

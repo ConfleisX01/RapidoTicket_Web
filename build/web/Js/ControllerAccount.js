@@ -56,8 +56,9 @@ export async function loginEmpleado() {
     try {
         const response = await fetch(URL)
         const data = await response.json()
+        console.log(data)
         if (data.response != "Error") {
-            localStorage.setItem("token", data.response)
+            localStorage.setItem("token", data)
             verificarLogin()
         }
     } catch (error) {
@@ -73,11 +74,14 @@ export async function verificarLogin() {
         try {
             const response = await fetch(URL)
             const data = await response.json()
-            if (data != null && data.numeroEmpleado == "ADM001") {
-                window.location.href = './html/admin/index.html'
-            } else if (data != null && data.numeroEmpleado == "EMP001") {
-                window.location.href = './html/admin/index.html'
+            
+            if (data != null && data.numeroEmpleado.startsWith("ADM")) {
+                window.location.href = './html/admin/index.html';
+            } else if (data != null && data.numeroEmpleado.startsWith("EMP")) {
+                console.log("Empleado y no administrador")
+                localStorage.setItem("numeroEmpleado", data.numeroEmpleado)
             }
+            
         } catch (error) {
             console.log(error)
         }

@@ -130,32 +130,59 @@ public class ControllerEmpleado {
     }
 
     public String loginEmpleado(String usuario, String contrasenia) {
-        String query = "SELECT * FROM view_empleadoSesion WHERE usuario = ? AND contrasenia = ?";
+    String query = "SELECT * FROM view_empleadoSesion WHERE usuario = ? AND contrasenia = ?";
+    String token = null;
 
-        try {
-            ConexionMysql connMySQL = new ConexionMysql();
-            Connection conn = connMySQL.open();
-            PreparedStatement pstm = conn.prepareStatement(query);
+    try {
+        ConexionMysql connMySQL = new ConexionMysql();
+        Connection conn = connMySQL.open();
+        PreparedStatement pstm = conn.prepareStatement(query);
 
-            pstm.setString(1, usuario);
-            pstm.setString(2, contrasenia);
+        pstm.setString(1, usuario);
+        pstm.setString(2, contrasenia);
 
-            ResultSet rs = pstm.executeQuery();
+        ResultSet rs = pstm.executeQuery();
 
-            if (rs.next()) {
-                actualizarToken(rs.getInt("idEmpleado"));
-                return rs.getString("token");
-            }
-
-            pstm.close();
-            conn.close();
-            connMySQL.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
+        if (rs.next()) {
+            actualizarToken(rs.getInt("idEmpleado"));
+            token = obtenerUltimoToken(rs.getInt("idEmpleado"));
         }
-        return null;
+
+        pstm.close();
+        conn.close();
+        connMySQL.close();
+    } catch (Exception ex) {
+        ex.printStackTrace();
     }
+
+    return token;
+}
+
+public String obtenerUltimoToken(int idEmpleado) {
+    String ultimoToken = null;
+
+    try {
+        String query = "SELECT token FROM empleadoSesion WHERE idEmpleado = ? ORDER BY idSesion DESC LIMIT 1";
+        ConexionMysql connMySQL = new ConexionMysql();
+        Connection conn = connMySQL.open();
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setInt(1, idEmpleado);
+        ResultSet rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            ultimoToken = rs.getString("token");
+        }
+
+        pstmt.close();
+        conn.close();
+        connMySQL.close();
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+
+    return ultimoToken;
+}
+
 
     public void actualizarToken(int idEmpleado) {
         String query = "UPDATE empleadoSesion SET token = (?) WHERE idEmpleado = (?)";
