@@ -178,4 +178,45 @@ public class RestCamion extends Application {
         }
         return Response.ok(out).build();
     }
+    
+    @Path("agregarPersona")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response agregarpersona(@FormParam("idCamion") int idCamion) {
+        Gson gson = new Gson();
+        String out = "";
+        try {
+            ControllerCamion ct = new ControllerCamion();
+            ct.agregarPersona(idCamion);
+            out = """
+                {"response":"Persona registrada"}
+                """;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            out = """
+                {"response":"No se registro, vuelve a intentarlo"}
+                """;
+        }
+        return Response.ok(out).build();
+    }
+    @Path("quitarPersona")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response quitarPersona(@FormParam("idCamion") int idCamion) {
+        Gson gson = new Gson();
+        String out = "";
+        try {
+            ControllerCamion ct = new ControllerCamion();
+            ct.quitarPersona(idCamion);
+            out = """
+                {"response":"Persona eliminada"}
+                """;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            out = """
+                {"response":"No se registro, vuelve a intentarlo"}
+                """;
+        }
+        return Response.ok(out).build();
+    }
 }

@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -166,4 +167,39 @@ public class ControllerCamion {
             return null;
         }
     }
+    
+    public void agregarPersona(int idCamion) throws SQLException{
+        String query = "CALL sp_incrementar_cantidad_personas(?)";
+        try {
+              ConexionMysql connMysql = new ConexionMysql();
+            Connection conn = connMysql.open();
+            PreparedStatement pstm = conn.prepareStatement(query);
+            
+            pstm.setInt(1, idCamion);
+            
+              pstm.execute();
+            System.out.println("Persona registrada exitosamente.");
+            pstm.close();
+            connMysql.close();
+    } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+}
+    public void quitarPersona(int idCamion) throws SQLException{
+        String query = "CALL sp_disminuir_cantidad_personas(?)";
+        try {
+              ConexionMysql connMysql = new ConexionMysql();
+            Connection conn = connMysql.open();
+            PreparedStatement pstm = conn.prepareStatement(query);
+            
+            pstm.setInt(1, idCamion);
+            
+              pstm.execute();
+            System.out.println("Persona eliminada exitosamente.");
+            pstm.close();
+            connMysql.close();
+    } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+}
 }
