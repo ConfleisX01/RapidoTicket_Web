@@ -72,11 +72,12 @@ async function getAccountContent() {
     // TODO: Asignar los botones para poder iniciar sesion y crear una cuenta nueva obteniendo el contenido de el formulario
 
     let btnContinueLogin = document.getElementById('btnContinueLogin')
+    
+    ca.verificarLogin()
 
     btnContinueLogin.addEventListener('click', () => {
-        // TODO: Crear las funciones para verificar el login del usuario
-
-        window.location.href = './html/admin/index.html'
+        ca.loginEmpleado()
+        //window.location.href = './html/admin/index.html'
     })
 
     let btnContinueCreate = document.getElementById('btnContinueCreate')

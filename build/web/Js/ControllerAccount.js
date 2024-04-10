@@ -48,6 +48,42 @@ export async function registrarUsuario() {
     }
 }
 
+export async function loginEmpleado() {
+    let usuario = document.getElementById('txtUsuario').value
+    let contrasenia = document.getElementById('txtContrasenia').value
+    const URL = `http://localhost:8080/DreamSoft_RapidoTicket/api/empleado/loginEmpleado?usuario=${usuario}&contrasenia=${contrasenia}`
+
+    try {
+        const response = await fetch(URL)
+        const data = await response.json()
+        if (data.response != "Error") {
+            localStorage.setItem("token", data.response)
+            verificarLogin()
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export async function verificarLogin() {
+    let token = localStorage.getItem("token")
+
+    if (token) {
+        const URL = `http://localhost:8080/DreamSoft_RapidoTicket/api/empleado/verificarLogin?token=${token}`
+        try {
+            const response = await fetch(URL)
+            const data = await response.json()
+            if (data != null && data.numeroEmpleado == "ADM001") {
+                window.location.href = './html/admin/index.html'
+            } else if (data != null && data.numeroEmpleado == "EMP001") {
+                window.location.href = './html/admin/index.html'
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
 function verificarInputs() {
     let usuario = document.getElementById('txtEmpleadoRegistro').value
     let contrasenia = document.getElementById('txtEmpleadoContrasenia').value
