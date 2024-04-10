@@ -13,12 +13,14 @@ public class Usuario {
     private String usuario;
     private String contrasenia;
     private Persona persona;
+    private Tarjeta tarjeta;
 
-    public Usuario(int idUsuario, String usuario, String contrasenia, Persona persona) {
+    public Usuario(int idUsuario, String usuario, String contrasenia, Persona persona, Tarjeta tarjeta) {
         this.idUsuario = idUsuario;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
         this.persona = persona;
+        this.tarjeta = tarjeta;
     }
 
     public Usuario() {
@@ -55,6 +57,15 @@ public class Usuario {
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
+
+    public Tarjeta getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(Tarjeta tarjeta) {
+        this.tarjeta = tarjeta;
+    }
+
     
     
 }

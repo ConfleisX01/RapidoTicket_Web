@@ -6,8 +6,10 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.utl.dsm.controller.ControllerDestino;
@@ -25,7 +27,7 @@ public class RestDestino {
     @Produces(MediaType.APPLICATION_JSON)
     public Response agregarDestino(@FormParam("destino") String destino) {
         Gson gson = new Gson();
-        
+
         String out = "";
         try {
             ControllerDestino cd = new ControllerDestino();
@@ -41,15 +43,15 @@ public class RestDestino {
         }
         return Response.ok(out).build();
     }
-    
+
     @Path("getAllDestinos")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllDestinos() {
         String out = "";
-        List<Destino> lista = new ArrayList<>();        
+        List<Destino> lista = new ArrayList<>();
         ControllerDestino cd = new ControllerDestino();
-        
+
         try {
             Gson gson = new Gson();
             lista = cd.getAllDestinos();
@@ -62,5 +64,33 @@ public class RestDestino {
         }
         return Response.ok(out).build();
     }
-    
+
+    @Path("destinosPorCamion")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getDestinosPorCamion(@QueryParam("idCamion") int idCamion) {
+        var out = "";
+        var controller = new ControllerDestino();
+
+        var gson = new Gson();
+        List<Destino> destinos = null;
+        try {
+            destinos = controller.getDestinosPorCamion(idCamion);
+            out = gson.toJson(destinos);
+            System.out.println("tenis");
+
+            // Verificar si la lista de destinos está vacía y devolver un mensaje apropiado
+            if (destinos.isEmpty()) {
+                out = """
+                      {"response" : "No se encontraron destinos para el camión especificado."}
+                      """;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            out = """
+                  {"response" : "Error al obtener la lista de destinos."}
+                  """;
+        }
+        return Response.ok(out).build();
+    }
 }
