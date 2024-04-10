@@ -79,7 +79,7 @@ export async function verificarLogin() {
                 window.location.href = './html/admin/index.html';
             } else if (data != null && data.numeroEmpleado.startsWith("EMP")) {
                 console.log("Empleado y no administrador")
-                localStorage.setItem("numeroEmpleado", data.numeroEmpleado)
+                localStorage.setItem("idEmpleado", data.idEmpleado)
             }
             
         } catch (error) {

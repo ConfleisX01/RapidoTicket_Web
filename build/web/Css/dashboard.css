@@ -250,3 +250,12 @@ table tbody tr:hover {
     transform: scale(1.1);
     border-radius: 50%;
 }
+
+.option-hover{
+    transition: all 0.2s ease-in-out;
+    border-bottom: 1px solid var(--semi-dark-blue);
+}
+
+.option-hover:hover {
+    border-bottom: 1px solid var(--bus-color);
+}

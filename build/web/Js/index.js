@@ -9,6 +9,7 @@ function startControllers() {
     let btnLogin = document.getElementById('btnLogin')
     let btnCode = document.getElementById('btnCode')
     let btnReport = document.getElementById('btnReport')
+    let btnSalir = document.getElementById('btnSalir')
 
     btnIndex.addEventListener('click', () => {
         getModuleHome()
@@ -25,6 +26,13 @@ function startControllers() {
     btnReport.addEventListener('click', () => {
         getModuleReport()
     })
+
+    btnSalir.addEventListener('click', () => {
+        localStorage.clear()
+        getModuleHome()
+    })
+
+    empleadoLogueado()
 }
 
 // Funcion para obtener el contenido del modulo home y aplicarlo
@@ -71,7 +79,7 @@ async function getAccountContent() {
 
     btnContinueLogin.addEventListener('click', () => {
         ca.loginEmpleado()
-        window.location.href = './html/admin/index.html';
+        //window.location.href = './html/admin/index.html';
     })
 
     let btnContinueCreate = document.getElementById('btnContinueCreate')
@@ -139,6 +147,17 @@ function testModuleContent(url) {
 // Funcion para resolver el error cuando se muestra una alerta LLAMAR CADA VEZ QUE SE MUESTRE UNA ALERTA
 function fixSwal() {
     document.body.classList.remove('swal2-height-auto');
+}
+
+function empleadoLogueado() {
+    let token = localStorage.getItem('token')
+    let btnSalir = document.getElementById('btnSalir')
+
+    if (token) {
+        btnSalir.classList.remove("d-none");
+    } else {
+        btnSalir.classList.add("d-none");
+    }
 }
 
 // Iniciamos los botones y les agregamos sus respectivas funciones

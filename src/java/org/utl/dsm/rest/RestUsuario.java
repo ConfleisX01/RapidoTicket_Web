@@ -16,6 +16,7 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.util.List;
 import org.utl.dsm.controller.ControllerUsuario;
 import org.utl.dsm.model.Usuario;
 
@@ -72,5 +73,25 @@ public class RestUsuario extends Application {
                   """;
         }
         return Response.status(Response.Status.CREATED).entity(out).build();
+    }
+    
+    @Path("getAllUsuarios")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllUsuarios() {
+        String out = "";
+        List<Usuario> usuarios = null;
+        ControllerUsuario cu = new ControllerUsuario();
+        
+        try {
+            usuarios = cu.getAllUsuarios();
+            out = new Gson().toJson(usuarios);
+        } catch (Exception e) {
+            e.printStackTrace();
+            out = """
+                  {"response" : "Error al obtener todos los usuarios"}
+                  """;
+        }
+        return Response.status(Response.Status.OK).entity(out).build();
     }
 }

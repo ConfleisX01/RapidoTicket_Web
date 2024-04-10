@@ -9,6 +9,8 @@ import com.mysql.cj.jdbc.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import org.utl.dsm.db.ConexionMysql;
 import org.utl.dsm.model.Persona;
 import org.utl.dsm.model.Tarjeta;
@@ -50,6 +52,39 @@ public Usuario loginUsuario(String usuario, String contrasenia) {
         e.printStackTrace();
         return null;
     }
+}
+
+public List<Usuario> getAllUsuarios() {
+    String query = "SELECT * FROM usuario";
+    List<Usuario> usuarios = new ArrayList<>();
+
+    try {
+        ConexionMysql connMySQL = new ConexionMysql();
+        Connection conn = connMySQL.open();
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        ResultSet rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            Usuario u = new Usuario();
+            Persona p = new Persona();
+
+            u.setIdUsuario(rs.getInt("idUsuario"));
+            u.setUsuario(rs.getString("usuario"));
+            u.setContrasenia(rs.getString("contrasenia"));
+            p.setIdPersona(rs.getInt("idPersona"));
+            u.setPersona(p);
+
+            usuarios.add(u);
+        }
+
+        rs.close();
+        pstmt.close();
+        connMySQL.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return usuarios;
 }
 
 

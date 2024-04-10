@@ -1,7 +1,7 @@
 export async function comenzarViaje() {
     const URL = 'http://localhost:8080/DreamSoft_RapidoTicket/api/camion/activar'
     let idCamion = document.getElementById('txtIdCamion').value
-    let empleado = localStorage.getItem('numeroEmpleado')
+    let empleado = localStorage.getItem('idEmpleado')
 
     if (empleado) {
         if (verificarInputs()) {

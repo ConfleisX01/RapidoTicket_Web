@@ -2,6 +2,9 @@ export function cargarContenido() {
     cargarDestinosTotales()
     cargarCamionesTotales()
     cargarEmpleadosTotales()
+    cargarMensajes()
+    cargarMensajesTotales()
+    cargarUsuariosTotales()
     cargarGrafica()
 }
 
@@ -36,6 +39,47 @@ async function cargarEmpleadosTotales() {
 
     texto.innerHTML = ""
     texto.innerHTML = cantidadEmpleados
+}
+
+async function cargarMensajes() {
+    const URL = 'http://localhost:8080/DreamSoft_RapidoTicket/api/mensajes/getAllMensajes'
+    let data = await getAllData(URL)
+    let container = document.getElementById('messages-container')
+
+    console.log(data)
+
+    data.forEach(element => {
+        let content = `<div class="container-fluid message-card d-flex">
+        <div class="separator d-none d-md-block">
+            <div class="dot"></div>
+        </div>
+        <div class="mx-2 p-2 d-flex align-items-center justify-content-center d-none d-md-block">
+            <img src="${element.foto}" alt="Empleoyee" class="msg-img">
+        </div>
+        <div class="flex-grow-1 message-content m-2 p-2">
+            <p class="m-0">${element.mensaje}</p>
+        </div>
+    </div>`
+
+    container.innerHTML += content
+
+    });
+}
+
+async function cargarMensajesTotales() {
+    const URL = 'http://localhost:8080/DreamSoft_RapidoTicket/api/mensajes/getAllMensajes'
+    let data = await getAllData(URL)
+    let lbTotalMensajes = document.getElementById('lbTotalMensajes')
+
+    lbTotalMensajes.innerHTML = data.length
+}
+
+async function cargarUsuariosTotales() {
+    const URL = 'http://localhost:8080/DreamSoft_RapidoTicket/api/usuario/getAllUsuarios'
+    let data = await getAllData(URL)
+    let lbTotalUsuarios = document.getElementById('lbTotalUsuarios')
+
+    lbTotalUsuarios.innerHTML = data.length
 }
 
 async function cargarGrafica() {
